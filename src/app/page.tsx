@@ -7,6 +7,7 @@ import { TestimonialsSection } from "@/components/sections/testimonials-section"
 import { CtaSection } from "@/components/sections/cta-section";
 import { FaqSection } from "@/components/sections/faq-section";
 import AiRecommender from "@/components/ai-recommender";
+import { PurchaseFlow } from "@/components/purchase-flow";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
         <HeroSection />
         <VslSection />
         <BookShowcase />
+        <PurchaseFlow />
         <TestimonialsSection />
         <CtaSection />
         <AiRecommender />

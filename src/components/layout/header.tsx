@@ -1,5 +1,5 @@
 import { BookOpen } from "lucide-react";
-import { CtaButton } from "@/components/cta-button";
+import Link from 'next/link';
 
 export function Header() {
   return (
@@ -7,12 +7,7 @@ export function Header() {
       <div className="container flex h-14 items-center">
         <div className="mr-4 flex items-center">
           <BookOpen className="h-6 w-6 text-primary" />
-          <span className="ml-2 font-bold">BookVault</span>
-        </div>
-        <div className="flex flex-1 items-center justify-end space-x-2">
-          <CtaButton size="sm">
-            Adquirir Pacote por R$9,90
-          </CtaButton>
+          <Link href="/" className="ml-2 font-bold">BookVault</Link>
         </div>
       </div>
     </header>

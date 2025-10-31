@@ -10,8 +10,12 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: "2rem",
+      padding: "1rem",
       screens: {
+        "sm": "640px",
+        "md": "768px",
+        "lg": "1024px",
+        "xl": "1280px",
         "2xl": "1400px",
       },
     },
@@ -87,19 +91,15 @@ export default {
         },
         'pulse-slow': {
           '50%': {
-            transform: 'scale(1)',
-            opacity: '0.8',
-          },
-          '100%': {
-            transform: 'scale(1.05)',
-            opacity: '1',
+            transform: 'scale(1.02)',
+            opacity: '0.9',
           },
         }
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
-        'pulse-slow': 'pulse-slow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'pulse-slow': 'pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
     },
   },
