@@ -116,23 +116,23 @@ export function PurchaseFlow() {
       </section>
 
       <Dialog open={isUpsellOpen} onOpenChange={setIsUpsellOpen}>
-        <DialogContent className="sm:max-w-[425px]">
+        <DialogContent className="max-w-[95vw] w-full sm:max-w-md rounded-lg">
           <DialogHeader>
-            <DialogTitle className="text-2xl text-center text-primary font-bold">ESPERE! OFERTA ESPECIAL!</DialogTitle>
-            <DialogDescription className="text-center text-lg">
+            <DialogTitle className="text-xl sm:text-2xl text-center text-primary font-bold">ESPERE! OFERTA ESPECIAL!</DialogTitle>
+            <DialogDescription className="text-center text-base sm:text-lg">
               Você recebeu um <span className="font-bold text-accent">desconto exclusivo!</span>
             </DialogDescription>
           </DialogHeader>
           <div className="py-4 text-center">
-            <p className="text-lg">Leve o <span className="font-bold">Pacote com 15 Livros</span> por apenas:</p>
-            <p className="text-5xl font-extrabold text-primary my-2">R$14,90</p>
+            <p className="text-base sm:text-lg">Leve o <span className="font-bold">Pacote com 15 Livros</span> por apenas:</p>
+            <p className="text-4xl sm:text-5xl font-extrabold text-primary my-2">R$14,90</p>
             <p className="text-muted-foreground line-through">De R$19,90</p>
           </div>
           <div className="flex flex-col gap-2">
-            <Button onClick={handleUpsellAccept} size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
+            <Button onClick={handleUpsellAccept} size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 text-base">
               SIM, EU QUERO A OFERTA!
             </Button>
-            <Button onClick={handleUpsellDecline} variant="outline">
+            <Button onClick={handleUpsellDecline} variant="outline" className="text-sm">
               Não, obrigado. Quero apenas o pacote básico por R$9,90.
             </Button>
           </div>
