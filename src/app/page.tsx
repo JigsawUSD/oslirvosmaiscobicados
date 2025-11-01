@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { HeroSection } from "@/components/sections/hero-section";
@@ -11,6 +14,8 @@ import { PurchaseFlow } from "@/components/purchase-flow";
 import { SocialProof } from "@/components/social-proof";
 
 export default function Home() {
+  const [isUpsellOpen, setIsUpsellOpen] = useState(false);
+
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
@@ -18,9 +23,9 @@ export default function Home() {
         <HeroSection />
         <VslSection />
         <BookShowcase />
-        <PurchaseFlow />
+        <PurchaseFlow isUpsellOpen={isUpsellOpen} setIsUpsellOpen={setIsUpsellOpen} />
         <TestimonialsSection />
-        <CtaSection />
+        <CtaSection onCtaClick={() => setIsUpsellOpen(true)} />
         <AiRecommender />
         <FaqSection />
       </main>

@@ -14,8 +14,12 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter }
 import { Check, Star, Clock } from "lucide-react";
 import { CountdownTimer } from "./countdown-timer";
 
-export function PurchaseFlow() {
-  const [isUpsellOpen, setIsUpsellOpen] = useState(false);
+interface PurchaseFlowProps {
+  isUpsellOpen: boolean;
+  setIsUpsellOpen: (isOpen: boolean) => void;
+}
+
+export function PurchaseFlow({ isUpsellOpen, setIsUpsellOpen }: PurchaseFlowProps) {
   const [isOfferExpired, setIsOfferExpired] = useState(false);
   const { toast } = useToast();
 
