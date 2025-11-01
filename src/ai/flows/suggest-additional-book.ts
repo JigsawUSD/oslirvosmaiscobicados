@@ -25,10 +25,10 @@ export type SuggestAdditionalBookInput = z.infer<
 >;
 
 const SuggestAdditionalBookOutputSchema = z.object({
-  suggestedBook: z.string().describe('The title of the suggested book.'),
+  suggestedBook: z.string().describe('The title of the suggested book, which must be a real, well-known book.'),
   reason: z
     .string()
-    .describe('The reason why the book is suggested to the user.'),
+    .describe('The reason why this specific book is a good recommendation for the user based on their interests.'),
 });
 export type SuggestAdditionalBookOutput = z.infer<
   typeof SuggestAdditionalBookOutputSchema
@@ -46,12 +46,14 @@ const prompt = ai.definePrompt({
   output: {schema: SuggestAdditionalBookOutputSchema},
   prompt: `You are a book recommendation expert. Based on the books the user has already purchased and their described interests, suggest one additional book they might like.
 
+The suggested book must be a real, popular, and well-regarded book. Do not invent a book title.
+
 Make sure the suggested book is different from the purchased books.
 
 Purchased Books: {{purchasedBooks}}
 User Interests: {{interests}}
 
-Suggest a book and explain why the user might like it.`,
+Suggest a book and explain why the user might like it, connecting it to their stated interests.`,
 });
 
 const suggestAdditionalBookFlow = ai.defineFlow(
