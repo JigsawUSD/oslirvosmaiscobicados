@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -11,11 +11,16 @@ import {
 } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
-import { Check, Star } from "lucide-react";
+import { Check, Star, Clock } from "lucide-react";
+import { CountdownTimer } from "./countdown-timer";
 
 export function PurchaseFlow() {
   const [isUpsellOpen, setIsUpsellOpen] = useState(false);
+  const [isOfferExpired, setIsOfferExpired] = useState(false);
   const { toast } = useToast();
+
+  const initialPrice = "19,90";
+  const expiredPrice = "39,90";
 
   const handlePurchaseClick = (product: string, price: string) => {
     toast({
@@ -89,7 +94,14 @@ export function PurchaseFlow() {
                 <CardDescription>15 Livros de Alto Impacto</CardDescription>
               </CardHeader>
               <CardContent className="flex-grow">
-                <p className="text-4xl font-bold mb-4">R$19,90</p>
+                <div className="mb-4">
+                  <p className={`text-4xl font-bold ${isOfferExpired ? 'text-red-500' : ''}`}>
+                    R${isOfferExpired ? expiredPrice : initialPrice}
+                  </p>
+                  {isOfferExpired && (
+                     <p className="text-lg text-muted-foreground line-through">R${initialPrice}</p>
+                  )}
+                </div>
                 <ul className="space-y-2 text-muted-foreground">
                   <li className="flex items-center gap-2">
                     <Check className="h-5 w-5 text-green-500" />
@@ -105,10 +117,17 @@ export function PurchaseFlow() {
                   </li>
                 </ul>
               </CardContent>
-              <CardFooter>
-                <Button onClick={() => handlePurchaseClick("Pacote Mais Vendidos", "19,90")} className="w-full bg-accent text-accent-foreground hover:bg-accent/90" size="lg">
+              <CardFooter className="flex flex-col gap-4">
+                <Button onClick={() => handlePurchaseClick("Pacote Mais Vendidos", isOfferExpired ? expiredPrice : initialPrice)} className="w-full bg-accent text-accent-foreground hover:bg-accent/90" size="lg">
                   Quero o Pacote Mais Vendido
                 </Button>
+                <div className="w-full p-2 bg-muted/50 rounded-lg">
+                  <div className="flex items-center justify-center gap-2 text-sm font-medium text-destructive">
+                    <Clock className="h-5 w-5" />
+                    A oferta expira em:
+                  </div>
+                  <CountdownTimer onExpire={() => setIsOfferExpired(true)} />
+                </div>
               </CardFooter>
             </Card>
           </div>
@@ -126,7 +145,7 @@ export function PurchaseFlow() {
           <div className="py-4 text-center">
             <p className="text-base sm:text-lg">Leve o <span className="font-bold">Pacote com 15 Livros</span> por apenas:</p>
             <p className="text-4xl sm:text-5xl font-extrabold text-primary my-2">R$14,90</p>
-            <p className="text-muted-foreground line-through">De R$19,90</p>
+            <p className="text-muted-foreground line-through">De R${initialPrice}</p>
           </div>
           <div className="flex flex-col gap-2">
             <Button onClick={handleUpsellAccept} size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 text-base">

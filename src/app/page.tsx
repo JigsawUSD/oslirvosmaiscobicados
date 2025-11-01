@@ -8,6 +8,7 @@ import { CtaSection } from "@/components/sections/cta-section";
 import { FaqSection } from "@/components/sections/faq-section";
 import AiRecommender from "@/components/ai-recommender";
 import { PurchaseFlow } from "@/components/purchase-flow";
+import { SocialProof } from "@/components/social-proof";
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
         <FaqSection />
       </main>
       <Footer />
+      <SocialProof />
     </div>
   );
 }
