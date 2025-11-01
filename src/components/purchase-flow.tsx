@@ -139,7 +139,7 @@ export function PurchaseFlow({ isUpsellOpen, setIsUpsellOpen }: PurchaseFlowProp
       </section>
 
       <Dialog open={isUpsellOpen} onOpenChange={setIsUpsellOpen}>
-        <DialogContent className="max-w-[95vw] w-full sm:max-w-md rounded-lg">
+        <DialogContent className="sm:max-w-md">
           <DialogHeader>
             <DialogTitle className="text-xl sm:text-2xl text-center text-primary font-bold">ESPERE! OFERTA ESPECIAL!</DialogTitle>
             <DialogDescription className="text-center text-base sm:text-lg">
