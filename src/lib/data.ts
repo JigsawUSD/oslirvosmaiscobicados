@@ -69,10 +69,10 @@ export const books: Book[] = [
   },
   {
     id: '6',
-    title: 'Hábitos Atômicos',
-    author: 'James Clear',
-    description: 'Um método comprovado para criar bons hábitos e quebrar os maus, através de pequenas melhorias diárias.',
-    image: findImage('book-atomic-habits'),
+    title: 'Rápido e Devagar',
+    author: 'Daniel Kahneman',
+    description: 'Uma visão sobre os dois sistemas que moldam nosso pensamento: o rápido, intuitivo e emocional; e o lento, deliberativo e lógico.',
+    image: findImage('book-thinking-fast-slow'),
   },
   {
     id: '7',

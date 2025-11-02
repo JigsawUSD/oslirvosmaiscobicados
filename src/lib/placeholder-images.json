@@ -31,9 +31,9 @@
       "imageHint": "book cover"
     },
     {
-      "id": "book-atomic-habits",
-      "description": "Cover for Atomic Habits",
-      "imageUrl": "https://images.unsplash.com/photo-1521123845560-14093637aa7d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxib29rJTIwY292ZXJ8ZW58MHx8fHwxNzYxODU4NzQxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "id": "book-thinking-fast-slow",
+      "description": "Cover for Thinking, Fast and Slow",
+      "imageUrl": "https://images.unsplash.com/photo-1589998059171-988d887df646?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxib29rfGVufDB8fHx8MTc2MjEwMjYyN3ww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "book cover"
     },
     {
