@@ -76,10 +76,10 @@ export const books: Book[] = [
   },
   {
     id: '7',
-    title: 'A Sutil Arte de Ligar o F*da-se',
-    author: 'Mark Manson',
-    description: 'Uma abordagem contraintuitiva para viver uma vida boa, focando no que realmente importa.',
-    image: findImage('book-subtle-art'),
+    title: 'Antifrágil',
+    author: 'Nassim Nicholas Taleb',
+    description: 'Coisas que se beneficiam com o caos. Um guia para prosperar em um mundo de incertezas.',
+    image: findImage('book-antifragile'),
   },
   {
     id: '8',
@@ -90,10 +90,10 @@ export const books: Book[] = [
   },
   {
     id: '9',
-    title: 'Trabalho Focado (Deep Work)',
-    author: 'Cal Newport',
-    description: 'Regras para o sucesso focado em um mundo distraído, defendendo a capacidade de se concentrar sem distrações.',
-    image: findImage('book-deep-work'),
+    title: 'Trabalhe 4 Horas por Semana',
+    author: 'Timothy Ferriss',
+    description: 'Escape da rotina, viva onde quiser e junte-se aos novos ricos.',
+    image: findImage('book-4-hour-workweek'),
   },
   {
     id: '10',
