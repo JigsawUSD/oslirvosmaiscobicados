@@ -8,6 +8,8 @@ export function CountdownTimer({ onExpire }: { onExpire: () => void }) {
   const [timeLeft, setTimeLeft] = useState<number | null>(null);
 
   useEffect(() => {
+    let intervalId: NodeJS.Timeout | null = null;
+
     const getInitialTime = () => {
       const storedEndTime = localStorage.getItem('offerEndTime');
       if (storedEndTime) {
@@ -36,9 +38,11 @@ export function CountdownTimer({ onExpire }: { onExpire: () => void }) {
     // Set initial value
     updateTimer();
 
-    const intervalId = setInterval(updateTimer, 1000);
+    intervalId = setInterval(updateTimer, 1000);
 
-    return () => clearInterval(intervalId);
+    return () => {
+      if (intervalId) clearInterval(intervalId);
+    };
   }, [onExpire]);
 
   if (timeLeft === null) {
