@@ -26,11 +26,12 @@ export function PurchaseFlow({ isUpsellOpen, setIsUpsellOpen }: PurchaseFlowProp
   const [isOfferExpired, setIsOfferExpired] = useState(false);
   const [isSecondChanceOpen, setIsSecondChanceOpen] = useState(false);
   const [isSecondChanceExpired, setIsSecondChanceExpired] = useState(false);
+  const [hasSeenSecondChance, setHasSeenSecondChance] = useState(false);
   const { toast } = useToast();
 
   const initialPrice = "19,90";
   const secondChancePrice = "29,90";
-  const expiredPrice = "39,90";
+  const finalPrice = "39,90";
 
   const handlePurchaseClick = (product: string, price: string) => {
     toast({
@@ -56,19 +57,38 @@ export function PurchaseFlow({ isUpsellOpen, setIsUpsellOpen }: PurchaseFlowProp
   
   const handleMainOfferExpire = () => {
     setIsOfferExpired(true);
-    setIsSecondChanceOpen(true);
+    if (!hasSeenSecondChance) {
+      setIsSecondChanceOpen(true);
+    }
   }
   
   const handleSecondChancePurchase = () => {
     setIsSecondChanceOpen(false);
+    setHasSeenSecondChance(true);
     handlePurchaseClick("Pacote Mais Vendidos (2ª Chance)", secondChancePrice);
   }
 
+  const handleCloseSecondChance = (isOpen: boolean) => {
+    setIsSecondChanceOpen(isOpen);
+    if (!isOpen) {
+      setHasSeenSecondChance(true);
+    }
+  }
+
   const getBestSellerPrice = () => {
-    if(isSecondChanceExpired) return expiredPrice;
-    if(isOfferExpired) return secondChancePrice;
+    if (isSecondChanceExpired) return finalPrice;
+    if (isOfferExpired || hasSeenSecondChance) return secondChancePrice;
     return initialPrice;
   }
+
+  const getStrikethroughPrice = () => {
+    if (isSecondChanceExpired) return secondChancePrice;
+    if (isOfferExpired || hasSeenSecondChance) return initialPrice;
+    return null;
+  }
+
+  const strikethroughPrice = getStrikethroughPrice();
+
 
   return (
     <>
@@ -121,14 +141,11 @@ export function PurchaseFlow({ isUpsellOpen, setIsUpsellOpen }: PurchaseFlowProp
               </CardHeader>
               <CardContent className="flex-grow">
                 <div className="mb-4">
-                  <p className={`text-4xl font-bold ${isOfferExpired ? 'text-red-500' : ''}`}>
+                  <p className={`text-4xl font-bold ${(isOfferExpired || hasSeenSecondChance) && !isSecondChanceExpired ? 'text-destructive' : ''}`}>
                     R${getBestSellerPrice()}
                   </p>
-                  {(isOfferExpired && !isSecondChanceExpired) && (
-                     <p className="text-lg text-muted-foreground line-through">R${initialPrice}</p>
-                  )}
-                   {isSecondChanceExpired && (
-                     <p className="text-lg text-muted-foreground line-through">R${secondChancePrice}</p>
+                  {strikethroughPrice && (
+                     <p className="text-lg text-muted-foreground line-through">R${strikethroughPrice}</p>
                   )}
                 </div>
                 <ul className="space-y-2 text-muted-foreground">
@@ -147,7 +164,7 @@ export function PurchaseFlow({ isUpsellOpen, setIsUpsellOpen }: PurchaseFlowProp
                 </ul>
               </CardContent>
               <CardFooter className="flex flex-col gap-4">
-                <Button onClick={() => handlePurchaseClick("Pacote Mais Vendidos", getBestSellerPrice())} className="w-full bg-accent text-accent-foreground hover:bg-accent/90" size="lg">
+                <Button onClick={() => handlePurchaseClick("Pacote Mais Vendidos", getBestSellerPrice())} className="w-full bg-accent text-accent-foreground hover:bg-accent/90" size="lg" disabled={isOfferExpired && !hasSeenSecondChance && !isSecondChanceExpired}>
                   Quero o Pacote Mais Vendido
                 </Button>
                 <div className="w-full p-2 bg-muted/50 rounded-lg">
@@ -159,6 +176,7 @@ export function PurchaseFlow({ isUpsellOpen, setIsUpsellOpen }: PurchaseFlowProp
                     initialDurationInMs={TWO_HOURS_IN_MS}
                     storageKey="mainOfferEndTime"
                     onExpire={handleMainOfferExpire}
+                    expiredText={isSecondChanceExpired ? "Todas as ofertas expiraram" : "Oferta Expirada!"}
                   />
                 </div>
               </CardFooter>
@@ -191,7 +209,7 @@ export function PurchaseFlow({ isUpsellOpen, setIsUpsellOpen }: PurchaseFlowProp
         </DialogContent>
       </Dialog>
       
-      <Dialog open={isSecondChanceOpen} onOpenChange={setIsSecondChanceOpen}>
+      <Dialog open={isSecondChanceOpen} onOpenChange={handleCloseSecondChance}>
         <DialogContent className="sm:max-w-lg">
           <DialogHeader className="items-center">
             <AlertTriangle className="h-12 w-12 text-destructive" />
@@ -204,7 +222,7 @@ export function PurchaseFlow({ isUpsellOpen, setIsUpsellOpen }: PurchaseFlowProp
              <p className="font-bold text-primary">Vou te dar uma segunda e ÚLTIMA chance.</p>
             <p className="text-base sm:text-lg mt-4">Leve o <span className="font-bold">Pacote com 15 Livros</span> com um novo desconto:</p>
             <p className="text-4xl sm:text-5xl font-extrabold text-primary my-2">R${secondChancePrice}</p>
-            <p className="text-muted-foreground line-through">De R${expiredPrice}</p>
+            <p className="text-muted-foreground line-through">De R${finalPrice}</p>
           </div>
           <div className="flex flex-col gap-3">
              <div className="w-full p-2 bg-destructive/10 rounded-lg">
@@ -215,14 +233,17 @@ export function PurchaseFlow({ isUpsellOpen, setIsUpsellOpen }: PurchaseFlowProp
                   <CountdownTimer
                     initialDurationInMs={THIRTY_MINUTES_IN_MS}
                     storageKey="secondChanceOfferEndTime"
-                    onExpire={() => setIsSecondChanceExpired(true)}
+                    onExpire={() => {
+                        setIsSecondChanceExpired(true);
+                        setIsSecondChanceOpen(false);
+                    }}
                     className="text-center text-2xl font-mono font-bold tracking-widest p-2 text-destructive"
                   />
                 </div>
             <Button onClick={handleSecondChancePurchase} size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 text-base">
               QUERO MINHA ÚLTIMA CHANCE
             </Button>
-            <Button onClick={() => setIsSecondChanceOpen(false)} variant="outline" className="text-sm">
+            <Button onClick={() => handleCloseSecondChance(false)} variant="outline" className="text-sm">
               Não, perdi a oportunidade.
             </Button>
           </div>
