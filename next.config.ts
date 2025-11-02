@@ -52,6 +52,12 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'livrariascuritiba.vteximg.com.br',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
 };
