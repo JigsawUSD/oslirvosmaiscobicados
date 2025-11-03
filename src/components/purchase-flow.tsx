@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -63,8 +64,7 @@ export function PurchaseFlow({ isUpsellOpen, setIsUpsellOpen }: PurchaseFlowProp
   }
   
   const handleSecondChancePurchase = () => {
-    setIsSecondChanceOpen(false);
-    setHasSeenSecondChance(true);
+    handleCloseSecondChance(false);
     handlePurchaseClick("Pacote Mais Vendidos (2ª Chance)", secondChancePrice);
   }
 
@@ -164,7 +164,7 @@ export function PurchaseFlow({ isUpsellOpen, setIsUpsellOpen }: PurchaseFlowProp
                 </ul>
               </CardContent>
               <CardFooter className="flex flex-col gap-4">
-                <Button onClick={() => handlePurchaseClick("Pacote Mais Vendidos", getBestSellerPrice())} className="w-full bg-accent text-accent-foreground hover:bg-accent/90" size="lg" disabled={isOfferExpired && !hasSeenSecondChance && !isSecondChanceExpired}>
+                <Button onClick={() => handlePurchaseClick("Pacote Mais Vendidos", getBestSellerPrice())} className="w-full bg-accent text-accent-foreground hover:bg-accent/90" size="lg" disabled={isSecondChanceOpen}>
                   Quero o Pacote Mais Vendido
                 </Button>
                 <div className="w-full p-2 bg-muted/50 rounded-lg">
@@ -235,7 +235,7 @@ export function PurchaseFlow({ isUpsellOpen, setIsUpsellOpen }: PurchaseFlowProp
                     storageKey="secondChanceOfferEndTime"
                     onExpire={() => {
                         setIsSecondChanceExpired(true);
-                        setIsSecondChanceOpen(false);
+                        handleCloseSecondChance(false);
                     }}
                     className="text-center text-2xl font-mono font-bold tracking-widest p-2 text-destructive"
                   />
@@ -252,3 +252,5 @@ export function PurchaseFlow({ isUpsellOpen, setIsUpsellOpen }: PurchaseFlowProp
     </>
   );
 }
+
+    
