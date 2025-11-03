@@ -4,7 +4,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { cn } from '@/lib/utils';
 
 export const metadata: Metadata = {
-  title: 'BookVault - Seu Pacote de Livros de Sucesso',
+  title: 'LivrosMaisCobiçados - Seu Pacote de Livros de Sucesso',
   description: 'Adquira 10 dos livros mais procurados sobre sucesso e finanças por um preço imbatível.',
 };
 
