@@ -20,8 +20,7 @@ export function CountdownTimer({
   const [timeLeft, setTimeLeft] = useState<number | null>(null);
 
   useEffect(() => {
-    let intervalId: NodeJS.Timeout | null = null;
-
+    // This code now runs only on the client, after the initial render.
     const getInitialTime = () => {
       const storedEndTime = localStorage.getItem(storageKey);
       if (storedEndTime) {
@@ -41,22 +40,24 @@ export function CountdownTimer({
       if (distance <= 0) {
         setTimeLeft(0);
         onExpire();
-        if (intervalId) clearInterval(intervalId);
+        // No need to clear interval here, it will be cleared in the return function
       } else {
         setTimeLeft(distance);
       }
     };
     
-    updateTimer(); // Set initial value
+    updateTimer(); // Set initial value on client
 
-    intervalId = setInterval(updateTimer, 1000);
+    const intervalId = setInterval(updateTimer, 1000);
 
+    // Cleanup function to clear the interval when the component unmounts
     return () => {
-      if (intervalId) clearInterval(intervalId);
+      clearInterval(intervalId);
     };
   }, [onExpire, initialDurationInMs, storageKey]);
 
   if (timeLeft === null) {
+    // Render a placeholder on the server and initial client render
     return <div className="text-center text-lg font-bold p-2">...</div>;
   }
 
