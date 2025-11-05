@@ -21,12 +21,10 @@ export function HeroSection() {
               QUERO MEU PACOTE
             </CtaButton>
           </Link>
-          <Link href="#books" passHref>
-            <Button asChild variant="outline" size="lg">
-              <span>
+          <Link href="#books">
+            <Button variant="outline" size="lg">
                 Quais livros vêm no pacote?
                 <ArrowDown className="ml-2 h-5 w-5" />
-              </span>
             </Button>
           </Link>
         </div>
