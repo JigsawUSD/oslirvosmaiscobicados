@@ -137,7 +137,7 @@ export function PurchaseFlow({ isUpsellOpen, setIsUpsellOpen }: PurchaseFlowProp
               </div>
               <CardHeader>
                 <CardTitle>Pacote Mais Vendidos</CardTitle>
-                <CardDescription>15 Livros de Alto Impacto</CardDescription>
+                <CardDescription>10 Livros + 5 Bônus</CardDescription>
               </CardHeader>
               <CardContent className="flex-grow">
                 <div className="mb-4">
@@ -194,7 +194,7 @@ export function PurchaseFlow({ isUpsellOpen, setIsUpsellOpen }: PurchaseFlowProp
             </DialogDescription>
           </DialogHeader>
           <div className="py-4 text-center">
-            <p className="text-base sm:text-lg">Leve o <span className="font-bold">Pacote com 15 Livros</span> por apenas:</p>
+            <p className="text-base sm:text-lg">Leve o <span className="font-bold">Pacote Completo (10+5 Livros)</span> por apenas:</p>
             <p className="text-4xl sm:text-5xl font-extrabold text-primary my-2">R$14,90</p>
             <p className="text-muted-foreground line-through">De R${initialPrice}</p>
           </div>
@@ -220,7 +220,7 @@ export function PurchaseFlow({ isUpsellOpen, setIsUpsellOpen }: PurchaseFlowProp
           </DialogHeader>
           <div className="py-4 text-center border-t border-b">
              <p className="font-bold text-primary">Vou te dar uma segunda e ÚLTIMA chance.</p>
-            <p className="text-base sm:text-lg mt-4">Leve o <span className="font-bold">Pacote com 15 Livros</span> com um novo desconto:</p>
+            <p className="text-base sm:text-lg mt-4">Leve o <span className="font-bold">Pacote Completo (10+5 Livros)</span> com um novo desconto:</p>
             <p className="text-4xl sm:text-5xl font-extrabold text-primary my-2">R${secondChancePrice}</p>
             <p className="text-muted-foreground line-through">De R${finalPrice}</p>
           </div>
@@ -252,5 +252,3 @@ export function PurchaseFlow({ isUpsellOpen, setIsUpsellOpen }: PurchaseFlowProp
     </>
   );
 }
-
-    

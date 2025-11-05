@@ -16,15 +16,21 @@ export function HeroSection() {
           Tenha acesso instantâneo aos livros mais transformadores sobre finanças e desenvolvimento pessoal, por um preço que você não vai acreditar.
         </p>
         <div className="mt-8 flex flex-wrap justify-center items-center gap-4">
-          <Link href="#ofertas">
-            <CtaButton>
-              QUERO MEU PACOTE
+          <Link href="#ofertas" passHref>
+            <CtaButton asChild>
+              <a>
+                QUERO MEU PACOTE
+              </a>
             </CtaButton>
           </Link>
-          <Link href="#books">
-            <Button variant="outline" size="lg">
-              Quais livros vêm no pacote?
-              <ArrowDown className="ml-2 h-5 w-5" />
+          <Link href="#books" passHref>
+            <Button asChild variant="outline" size="lg">
+              <a>
+                <span>
+                  Quais livros vêm no pacote?
+                  <ArrowDown className="ml-2 h-5 w-5" />
+                </span>
+              </a>
             </Button>
           </Link>
         </div>

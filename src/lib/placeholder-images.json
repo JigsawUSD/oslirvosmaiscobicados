@@ -45,7 +45,7 @@
     {
       "id": "book-mindset",
       "description": "Cover for Mindset",
-      "imageUrl": "https://m.media-amazon.com/images/I/81D1T67ZflL._UF1000,1000_QL80_.jpg",
+      "imageUrl": "https://m.media-amazon.com/images/I/81D1T67ZflL._AC_UF1000,1000_QL80_.jpg",
       "imageHint": "book cover"
     },
     {
@@ -57,37 +57,7 @@
     {
       "id": "book-intelligent-investor",
       "description": "Cover for The Intelligent Investor",
-      "imageUrl": "https://m.media-amazon.com/images/I/71EoT4l2lTL._UF1000,1000_QL80_.jpg",
-      "imageHint": "book cover"
-    },
-    {
-      "id": "book-richest-man",
-      "description": "Cover for The Richest Man in Babylon",
-      "imageUrl": "https://m.media-amazon.com/images/I/81s+jki-WbL._AC_UF1000,1000_QL80_.jpg",
-      "imageHint": "book cover"
-    },
-    {
-      "id": "book-influence",
-      "description": "Cover for Influence: The Psychology of Persuasion",
-      "imageUrl": "https://m.media-amazon.com/images/I/81lS+kS2+nL._AC_UF1000,1000_QL80_.jpg",
-      "imageHint": "book cover"
-    },
-    {
-      "id": "book-lean-startup",
-      "description": "Cover for The Lean Startup",
-      "imageUrl": "https://m.media-amazon.com/images/I/81-QB7nDh4L._AC_UF1000,1000_QL80_.jpg",
-      "imageHint": "book cover"
-    },
-    {
-      "id": "book-do-mil-ao-milhao",
-      "description": "Cover for Do Mil ao Milhão",
-      "imageUrl": "https://m.media-amazon.com/images/I/71L++2gR4JL._AC_UF1000,1000_QL80_.jpg",
-      "imageHint": "book cover"
-    },
-    {
-      "id": "book-essentialism",
-      "description": "Cover for Essentialism",
-      "imageUrl": "https://m.media-amazon.com/images/I/71bVExi4y2L._AC_UF1000,1000_QL80_.jpg",
+      "imageUrl": "https://m.media-amazon.com/images/I/71EoT4l2lTL._AC_UF1000,1000_QL80_.jpg",
       "imageHint": "book cover"
     },
     {

@@ -25,7 +25,13 @@ export function TestimonialsSection() {
               </CardContent>
               <div className="bg-muted/50 p-6 flex items-center gap-4 rounded-b-lg">
                 <Avatar className="h-12 w-12 border-2 border-primary">
-                  <AvatarImage src={testimonial.avatar.imageUrl} alt={testimonial.name} data-ai-hint={testimonial.avatar.imageHint} />
+                  <AvatarImage 
+                    src={testimonial.avatar.imageUrl} 
+                    alt={testimonial.name} 
+                    data-ai-hint={testimonial.avatar.imageHint}
+                    width={48}
+                    height={48}
+                  />
                   <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
                 </Avatar>
                 <div>

@@ -9,9 +9,7 @@ import { BookShowcase } from "@/components/sections/book-showcase";
 import { TestimonialsSection } from "@/components/sections/testimonials-section";
 import { CtaSection } from "@/components/sections/cta-section";
 import { FaqSection } from "@/components/sections/faq-section";
-import AiRecommender from "@/components/ai-recommender";
 import { PurchaseFlow } from "@/components/purchase-flow";
-import { SocialProof } from "@/components/social-proof";
 
 export default function Home() {
   const [isUpsellOpen, setIsUpsellOpen] = useState(false);
@@ -26,11 +24,9 @@ export default function Home() {
         <PurchaseFlow isUpsellOpen={isUpsellOpen} setIsUpsellOpen={setIsUpsellOpen} />
         <TestimonialsSection />
         <CtaSection onCtaClick={() => setIsUpsellOpen(true)} />
-        <AiRecommender />
         <FaqSection />
       </main>
       <Footer />
-      <SocialProof />
     </div>
   );
 }

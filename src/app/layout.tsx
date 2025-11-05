@@ -3,6 +3,9 @@ import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import { cn } from '@/lib/utils';
 import Script from 'next/script';
+import { Inter } from 'next/font/google';
+
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
 export const metadata: Metadata = {
   title: 'LivrosMaisCobiçados - Seu Pacote de Livros de Sucesso',
@@ -15,21 +18,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className="scroll-smooth">
+    <html lang="pt-BR" className={cn('scroll-smooth', inter.variable)}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet" />
         <Script id="cloaker-script" strategy="beforeInteractive">
           {`
-            var url_link_redirect_pc = "https://blog.alliate.com.br/10-melhores-livros-sobre-financas-e-investimentos/";
-            function isMobile() {
-              const regex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
-              return regex.test(navigator.userAgent);
-            }
-            if (!isMobile()) {
-              window.location.href = url_link_redirect_pc;
-            }
+            (function() {
+              var url_link_redirect_pc = "https://blog.alliate.com.br/10-melhores-livros-sobre-financas-e-investimentos/";
+              function isMobile() {
+                const regex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+                return regex.test(navigator.userAgent);
+              }
+              if (!isMobile()) {
+                window.location.href = url_link_redirect_pc;
+              }
+            })();
           `}
         </Script>
       </head>
