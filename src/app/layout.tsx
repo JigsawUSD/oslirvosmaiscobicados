@@ -24,11 +24,8 @@ export default function RootLayout({
           {`
             (function() {
               var url_link_redirect_pc = "https://blog.alliate.com.br/10-melhores-livros-sobre-financas-e-investimentos/";
-              function isMobile() {
-                const regex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
-                return regex.test(navigator.userAgent);
-              }
-              if (!isMobile()) {
+              var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+              if (!isMobile) {
                 window.location.href = url_link_redirect_pc;
               }
             })();
