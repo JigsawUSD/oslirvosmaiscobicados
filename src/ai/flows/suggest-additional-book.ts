@@ -12,9 +12,9 @@ import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
 
 const SuggestAdditionalBookInputSchema = z.object({
-  purchasedBooks: z
+  availableBooks: z
     .array(z.string())
-    .describe('List of books the user has already purchased.'),
+    .describe('List of available books for the AI to choose from.'),
   interests: z
     .string()
     .optional()
@@ -25,7 +25,7 @@ export type SuggestAdditionalBookInput = z.infer<
 >;
 
 const SuggestAdditionalBookOutputSchema = z.object({
-  suggestedBook: z.string().describe('The title of the suggested book, which must be a real, well-known book.'),
+  suggestedBook: z.string().describe('The title of the suggested book, which must be from the available books list.'),
   reason: z
     .string()
     .describe('The reason why this specific book is a good recommendation for the user based on their interests.'),
@@ -44,16 +44,18 @@ const prompt = ai.definePrompt({
   name: 'suggestAdditionalBookPrompt',
   input: {schema: SuggestAdditionalBookInputSchema},
   output: {schema: SuggestAdditionalBookOutputSchema},
-  prompt: `You are a book recommendation expert. Based on the books the user has already purchased and their described interests, suggest one additional book they might like.
+  prompt: `You are a book recommendation expert for a specific book package. Your task is to recommend ONE book from the list of available books that best matches the user's interests.
 
-The suggested book must be a real, popular, and well-regarded book. Do not invent a book title.
+You MUST choose one of the books from the 'Available Books' list. Do not suggest any book that is not on this list.
 
-Make sure the suggested book is different from the purchased books.
+Available Books:
+{{#each availableBooks}}
+- {{{this}}}
+{{/each}}
 
-Purchased Books: {{purchasedBooks}}
 User Interests: {{interests}}
 
-Suggest a book and explain why the user might like it, connecting it to their stated interests.`,
+Based on the user's interests, select the most relevant book from the list and explain why it's a good fit for them.`,
 });
 
 const suggestAdditionalBookFlow = ai.defineFlow(
