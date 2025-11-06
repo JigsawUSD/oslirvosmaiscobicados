@@ -21,7 +21,7 @@ export function VslSection() {
   const togglePlayPause = () => {
     const video = videoRef.current;
     if (video) {
-      if (video.paused) {
+      if (video.paused || video.ended) {
         video.play();
       } else {
         video.pause();
