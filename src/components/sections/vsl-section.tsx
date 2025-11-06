@@ -11,6 +11,7 @@ export function VslSection() {
   const [volume, setVolume] = useState(1);
   const [isMuted, setIsMuted] = useState(true);
 
+  // Auto-mute on initial load
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.muted = true;
@@ -18,13 +19,12 @@ export function VslSection() {
   }, []);
 
   const togglePlayPause = () => {
-    if (videoRef.current) {
-      if (videoRef.current.paused) {
-        videoRef.current.play();
-        setIsPlaying(true);
+    const video = videoRef.current;
+    if (video) {
+      if (video.paused) {
+        video.play();
       } else {
-        videoRef.current.pause();
-        setIsPlaying(false);
+        video.pause();
       }
     }
   };
@@ -38,6 +38,7 @@ export function VslSection() {
         videoRef.current.muted = false;
         setIsMuted(false);
       } else {
+        videoRef.current.muted = true;
         setIsMuted(true);
       }
     }
@@ -48,6 +49,7 @@ export function VslSection() {
       const newMutedState = !videoRef.current.muted;
       videoRef.current.muted = newMutedState;
       setIsMuted(newMutedState);
+      // If unmuting and volume is 0, set it to 1
       if (!newMutedState && volume === 0) {
         setVolume(1);
         videoRef.current.volume = 1;
@@ -55,23 +57,21 @@ export function VslSection() {
     }
   };
 
+  // Update playing state based on video events
   useEffect(() => {
     const video = videoRef.current;
     if (video) {
-      const handleVideoEnd = () => {
-        setIsPlaying(false);
-      };
       const handlePlay = () => setIsPlaying(true);
       const handlePause = () => setIsPlaying(false);
-
-      video.addEventListener('ended', handleVideoEnd);
+      
       video.addEventListener('play', handlePlay);
       video.addEventListener('pause', handlePause);
+      video.addEventListener('ended', handlePause); // Set to not playing when ended
       
       return () => {
-        video.removeEventListener('ended', handleVideoEnd);
         video.removeEventListener('play', handlePlay);
         video.removeEventListener('pause', handlePause);
+        video.removeEventListener('ended', handlePause);
       };
     }
   }, []);
@@ -98,7 +98,7 @@ export function VslSection() {
                 controls={false}
                 preload="auto"
               >
-                <source src="/minha-VSL%20comprimida.mp4" type="video/mp4" />
+                <source src="/minha-VSL-comprimida.mp4" type="video/mp4" />
                 Seu navegador não suporta a tag de vídeo.
               </video>
              <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-4">
