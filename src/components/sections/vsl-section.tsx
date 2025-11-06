@@ -1,10 +1,10 @@
 "use client";
 
 export function VslSection() {
-  // Ação necessária:
-  // 1. Coloque seu arquivo de vídeo na pasta 'public'.
-  // 2. Substitua "seu-video.mp4" abaixo pelo nome exato do seu arquivo.
-  const videoUrl = "/seu-video.mp4"; 
+  // O vídeo abaixo foi configurado para usar o arquivo que você forneceu.
+  // Certifique-se de que o arquivo "Você já parou para pensar por que algumas pessoas parecem.web"
+  // está na pasta 'public' do seu projeto.
+  const videoUrl = "/Você já parou para pensar por que algumas pessoas parecem.web";
 
   return (
     <section id="vsl" className="py-12 sm:py-20 bg-background">
