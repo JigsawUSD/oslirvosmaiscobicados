@@ -1,21 +1,11 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 
 export function VslSection() {
-  const [videoUrl, setVideoUrl] = useState<string | null>("/Você já parou para pensar por que algumas pessoas parecem.web");
+  const [videoUrl, setVideoUrl] = useState<string | null>("/minha-VSL.mp4");
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      const url = URL.createObjectURL(file);
-      setVideoUrl(url);
-    }
-  };
-  
   return (
     <section id="vsl" className="py-12 sm:py-20 bg-background">
       <div className="container">
@@ -43,19 +33,6 @@ export function VslSection() {
               </video>
             )}
           </div>
-          <div className="mt-4">
-              <Label htmlFor="video-upload" className="mb-2 block">Faça o upload do seu vídeo VSL:</Label>
-              <Input 
-                id="video-upload" 
-                type="file" 
-                accept="video/*" 
-                onChange={handleFileChange} 
-                className="file:text-primary file:font-semibold hover:file:bg-primary/10"
-              />
-              <p className="text-sm text-muted-foreground mt-2">
-                Este upload é apenas para visualização local e não será salvo permanentemente.
-              </p>
-            </div>
         </div>
       </div>
     </section>
