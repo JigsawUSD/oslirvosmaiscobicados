@@ -87,6 +87,7 @@ export function VslSection() {
                 className="absolute top-0 left-0 w-full h-full"
                 onClick={togglePlayPause}
                 playsInline
+                controls={false}
               >
                 <source src={`${videoUrl}.mp4`} type="video/mp4" />
                 <source src={`${videoUrl}.webm`} type="video/webm" />
