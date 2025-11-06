@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useRef, useEffect } from "react";
@@ -104,7 +103,7 @@ export function VslSection() {
                 controls={false}
                 preload="metadata" // Changed to metadata for faster initial load
               >
-                <source src="/minha-VSL.mp4" type="video/mp4" />
+                <source src="/minha-VSL (1).mp4" type="video/mp4" />
                 Seu navegador não suporta a tag de vídeo.
               </video>
              <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-4">
