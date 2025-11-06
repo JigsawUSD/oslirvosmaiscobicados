@@ -1,21 +1,11 @@
 "use client";
 
 import { useState } from 'react';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
 
 export function VslSection() {
+  // ATENÇÃO: Substitua a URL abaixo pela URL do seu próprio vídeo.
+  // O vídeo deve estar hospedado em algum lugar acessível publicamente.
   const [videoUrl, setVideoUrl] = useState("https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4");
-  const [fileName, setFileName] = useState("");
-
-  const handleVideoUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      const url = URL.createObjectURL(file);
-      setVideoUrl(url);
-      setFileName(file.name);
-    }
-  };
 
   return (
     <section id="vsl" className="py-12 sm:py-20 bg-background">
@@ -40,17 +30,6 @@ export function VslSection() {
               Seu navegador não suporta a tag de vídeo.
             </video>
           </div>
-        </div>
-        <div className="max-w-md mx-auto mt-6 p-4 border rounded-lg">
-          <Label htmlFor="video-upload" className="font-bold">Carregar seu vídeo VSL</Label>
-          <Input 
-            id="video-upload" 
-            type="file" 
-            accept="video/*" 
-            onChange={handleVideoUpload}
-            className="mt-2"
-          />
-          {fileName && <p className="text-sm text-muted-foreground mt-2">Vídeo selecionado: {fileName}</p>}
         </div>
       </div>
     </section>
