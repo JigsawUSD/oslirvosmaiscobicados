@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useRef, useEffect } from "react";
@@ -6,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 
 export function VslSection() {
-  const [videoUrl] = useState<string>("/minha-VSL");
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(1);
@@ -15,7 +15,7 @@ export function VslSection() {
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.muted = true;
-      setIsPlaying(false);
+      // Autoplay is not reliable, so we don't set it here. User must interact.
     }
   }, []);
 
@@ -39,6 +39,9 @@ export function VslSection() {
       if (newVolume > 0) {
         videoRef.current.muted = false;
         setIsMuted(false);
+      } else {
+        // If volume is dragged to 0, we can also consider it muted
+        setIsMuted(true);
       }
     }
   };
@@ -48,20 +51,33 @@ export function VslSection() {
       const newMutedState = !videoRef.current.muted;
       videoRef.current.muted = newMutedState;
       setIsMuted(newMutedState);
+      // If unmuting and volume is 0, set volume to 1 (max)
       if (!newMutedState && volume === 0) {
         setVolume(1);
         videoRef.current.volume = 1;
       }
     }
   };
-  
-    useEffect(() => {
+
+  useEffect(() => {
     const video = videoRef.current;
     if (video) {
-      const handleVideoEnd = () => setIsPlaying(false);
+      const handleVideoEnd = () => {
+        setIsPlaying(false);
+        // Optionally reset the video to the beginning
+        // video.currentTime = 0;
+      };
+      const handlePlay = () => setIsPlaying(true);
+      const handlePause = () => setIsPlaying(false);
+
       video.addEventListener('ended', handleVideoEnd);
+      video.addEventListener('play', handlePlay);
+      video.addEventListener('pause', handlePause);
+      
       return () => {
         video.removeEventListener('ended', handleVideoEnd);
+        video.removeEventListener('play', handlePlay);
+        video.removeEventListener('pause', handlePause);
       };
     }
   }, []);
@@ -80,20 +96,17 @@ export function VslSection() {
         </div>
         <div className="max-w-4xl mx-auto">
           <div className="relative aspect-video rounded-lg overflow-hidden shadow-2xl bg-black group">
-            {videoUrl && (
               <video
                 ref={videoRef}
-                key={videoUrl}
                 className="absolute top-0 left-0 w-full h-full"
                 onClick={togglePlayPause}
                 playsInline
                 controls={false}
+                preload="metadata" // Changed to metadata for faster initial load
               >
-                <source src={`${videoUrl}.mp4`} type="video/mp4" />
-                <source src={`${videoUrl}.webm`} type="video/webm" />
+                <source src="/minha-VSL.mp4" type="video/mp4" />
                 Seu navegador não suporta a tag de vídeo.
               </video>
-            )}
              <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-4">
               <Button onClick={togglePlayPause} variant="ghost" size="icon" className="text-white hover:text-white hover:bg-white/20">
                 {isPlaying ? <Pause className="h-7 w-7" /> : <Play className="h-7 w-7" />}
