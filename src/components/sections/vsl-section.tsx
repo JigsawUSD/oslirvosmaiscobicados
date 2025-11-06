@@ -1,11 +1,17 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, type ChangeEvent } from 'react';
 
 export function VslSection() {
-  // ATENÇÃO: Substitua a URL abaixo pela URL do seu próprio vídeo.
-  // O vídeo deve estar hospedado em algum lugar acessível publicamente ou na pasta /public do projeto.
   const [videoUrl, setVideoUrl] = useState("https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4");
+
+  const handleVideoUpload = (event: ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const url = URL.createObjectURL(file);
+      setVideoUrl(url);
+    }
+  };
 
   return (
     <section id="vsl" className="py-12 sm:py-20 bg-background">
@@ -26,9 +32,25 @@ export function VslSection() {
               src={videoUrl}
               controls
               autoPlay
+              muted
             >
               Seu navegador não suporta a tag de vídeo.
             </video>
+          </div>
+          <div className="mt-4">
+            <label htmlFor="video-upload" className="block text-sm font-medium text-muted-foreground mb-2">
+              Para adicionar seu vídeo permanentemente, coloque o arquivo na pasta 'public' e me diga o nome do arquivo.
+            </label>
+            <input
+              id="video-upload"
+              type="file"
+              accept="video/*"
+              onChange={handleVideoUpload}
+              className="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary/10 file:text-primary hover:file:bg-primary/20"
+            />
+             <p className="text-xs text-muted-foreground mt-1">
+              (Use o campo acima para testar um vídeo localmente)
+            </p>
           </div>
         </div>
       </div>
