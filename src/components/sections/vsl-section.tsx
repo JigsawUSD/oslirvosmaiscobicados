@@ -1,7 +1,7 @@
 export function VslSection() {
-  // Para alterar o vídeo, vá no YouTube, clique em "Compartilhar", depois "Incorporar" e copie o link (URL) que aparece no atributo "src".
-  // Cole o novo link abaixo, substituindo o link de exemplo.
-  const videoUrl = "https://www.youtube.com/embed/dQw4w9WgXcQ";
+  // Para usar seu próprio vídeo, coloque o arquivo de vídeo na pasta `public`
+  // e substitua o link abaixo pelo caminho para o seu vídeo, por exemplo: "/meu-video.mp4"
+  const videoUrl = "https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4";
 
   return (
     <section id="vsl" className="py-12 sm:py-20 bg-background">
@@ -15,14 +15,14 @@ export function VslSection() {
           </p>
         </div>
         <div className="max-w-4xl mx-auto">
-          <div className="relative aspect-video rounded-lg overflow-hidden shadow-2xl">
-            <iframe
+          <div className="relative aspect-video rounded-lg overflow-hidden shadow-2xl bg-black">
+            <video
               className="absolute top-0 left-0 w-full h-full"
               src={videoUrl}
-              title="YouTube video player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
+              controls
+            >
+              Seu navegador não suporta a tag de vídeo.
+            </video>
           </div>
         </div>
       </div>
