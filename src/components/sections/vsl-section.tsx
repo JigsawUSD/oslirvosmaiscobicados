@@ -1,11 +1,7 @@
-import Image from 'next/image';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { PlayCircle } from 'lucide-react';
-
 export function VslSection() {
-  const vslThumbnail = PlaceHolderImages.find(img => img.id === 'vsl-thumbnail');
-
-  if (!vslThumbnail) return null;
+  // Para alterar o vídeo, vá no YouTube, clique em "Compartilhar", depois "Incorporar" e copie o link (URL) que aparece no atributo "src".
+  // Cole o novo link abaixo, substituindo o link de exemplo.
+  const videoUrl = "https://www.youtube.com/embed/dQw4w9WgXcQ";
 
   return (
     <section id="vsl" className="py-12 sm:py-20 bg-background">
@@ -19,17 +15,14 @@ export function VslSection() {
           </p>
         </div>
         <div className="max-w-4xl mx-auto">
-          <div className="relative aspect-video rounded-lg overflow-hidden shadow-2xl cursor-pointer group">
-            <Image
-              src={vslThumbnail.imageUrl}
-              alt={vslThumbnail.description}
-              fill
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
-              data-ai-hint={vslThumbnail.imageHint}
-            />
-            <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-              <PlayCircle className="h-20 w-20 text-white/80 transition-all duration-300 group-hover:text-white group-hover:scale-110" />
-            </div>
+          <div className="relative aspect-video rounded-lg overflow-hidden shadow-2xl">
+            <iframe
+              className="absolute top-0 left-0 w-full h-full"
+              src={videoUrl}
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
           </div>
         </div>
       </div>
