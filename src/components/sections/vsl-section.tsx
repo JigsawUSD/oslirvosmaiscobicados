@@ -14,7 +14,6 @@ export function VslSection() {
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.muted = true;
-      // Autoplay is not reliable, so we don't set it here. User must interact.
     }
   }, []);
 
@@ -39,7 +38,6 @@ export function VslSection() {
         videoRef.current.muted = false;
         setIsMuted(false);
       } else {
-        // If volume is dragged to 0, we can also consider it muted
         setIsMuted(true);
       }
     }
@@ -50,7 +48,6 @@ export function VslSection() {
       const newMutedState = !videoRef.current.muted;
       videoRef.current.muted = newMutedState;
       setIsMuted(newMutedState);
-      // If unmuting and volume is 0, set volume to 1 (max)
       if (!newMutedState && volume === 0) {
         setVolume(1);
         videoRef.current.volume = 1;
@@ -63,8 +60,6 @@ export function VslSection() {
     if (video) {
       const handleVideoEnd = () => {
         setIsPlaying(false);
-        // Optionally reset the video to the beginning
-        // video.currentTime = 0;
       };
       const handlePlay = () => setIsPlaying(true);
       const handlePause = () => setIsPlaying(false);
@@ -101,9 +96,9 @@ export function VslSection() {
                 onClick={togglePlayPause}
                 playsInline
                 controls={false}
-                preload="metadata" // Changed to metadata for faster initial load
+                preload="auto"
               >
-                <source src="/minha-VSL (1).mp4" type="video/mp4" />
+                <source src="/minha-VSL%20comprimida.mp4" type="video/mp4" />
                 Seu navegador não suporta a tag de vídeo.
               </video>
              <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-4">
