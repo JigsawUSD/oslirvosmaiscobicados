@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 export function VslSection() {
   // ATENÇÃO: Substitua a URL abaixo pela URL do seu próprio vídeo.
-  // O vídeo deve estar hospedado em algum lugar acessível publicamente.
+  // O vídeo deve estar hospedado em algum lugar acessível publicamente ou na pasta /public do projeto.
   const [videoUrl, setVideoUrl] = useState("https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4");
 
   return (
