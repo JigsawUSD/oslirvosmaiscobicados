@@ -34,12 +34,15 @@ export function PurchaseFlow({ isUpsellOpen, setIsUpsellOpen }: PurchaseFlowProp
   const secondChancePrice = "29,90";
   const finalPrice = "39,90";
 
-  const handlePurchaseClick = (product: string, price: string) => {
-    toast({
-      title: "Redirecionando para o Checkout",
-      description: `Produto: ${product} - Preço: R$${price}`,
-    });
-    // In a real app, you would redirect to a checkout URL here.
+  const handlePurchaseClick = (product: string, price: string, url?: string) => {
+    if (url) {
+      window.location.href = url;
+    } else {
+      toast({
+        title: "Redirecionando para o Checkout",
+        description: `Produto: ${product} - Preço: R$${price}`,
+      });
+    }
   };
 
   const handleBasicPackClick = () => {
@@ -47,12 +50,10 @@ export function PurchaseFlow({ isUpsellOpen, setIsUpsellOpen }: PurchaseFlowProp
   };
 
   const handleUpsellAccept = () => {
-    setIsUpsellOpen(false);
     window.location.href = 'https://pay.cakto.com.br/6ua4q2y';
   };
 
   const handleUpsellDecline = () => {
-    setIsUpsellOpen(false);
     window.location.href = 'https://pay.cakto.com.br/k92vi68_642845';
   };
   
@@ -164,7 +165,7 @@ export function PurchaseFlow({ isUpsellOpen, setIsUpsellOpen }: PurchaseFlowProp
                 </ul>
               </CardContent>
               <CardFooter className="flex flex-col gap-4">
-                <Button onClick={() => handlePurchaseClick("Pacote Mais Vendidos", getBestSellerPrice())} className="w-full bg-accent text-accent-foreground hover:bg-accent/90" size="lg" disabled={isSecondChanceOpen}>
+                <Button onClick={() => handlePurchaseClick("Pacote Mais Vendidos", getBestSellerPrice(), 'https://pay.cakto.com.br/7e2kpga')} className="w-full bg-accent text-accent-foreground hover:bg-accent/90" size="lg" disabled={isSecondChanceOpen}>
                   Quero o Pacote Mais Vendido
                 </Button>
                 <div className="w-full p-2 bg-muted/50 rounded-lg">
