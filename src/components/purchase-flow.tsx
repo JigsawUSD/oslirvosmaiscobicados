@@ -53,7 +53,7 @@ export function PurchaseFlow({ isUpsellOpen, setIsUpsellOpen }: PurchaseFlowProp
 
   const handleUpsellDecline = () => {
     setIsUpsellOpen(false);
-    handlePurchaseClick("Pacote Básico", "9,90");
+    window.location.href = 'https://pay.cakto.com.br/k92vi68_642845';
   };
   
   const handleMainOfferExpire = () => {
