@@ -33,8 +33,21 @@ export function PurchaseFlow({ isUpsellOpen, setIsUpsellOpen }: PurchaseFlowProp
   const initialPrice = "19,90";
   const secondChancePrice = "29,90";
   const finalPrice = "39,90";
+  
+  const checkoutUrlInitial = 'https://pay.cakto.com.br/7e2kpga';
+  // The user did not provide a URL for the 29,90 price, so we will reuse the initial one for now as a fallback.
+  const checkoutUrlSecondChance = 'https://pay.cakto.com.br/7e2kpga';
+  const checkoutUrlFinal = 'https://pay.cakto.com.br/wsmgs42';
 
-  const handlePurchaseClick = (product: string, price: string, url?: string) => {
+
+  const handlePurchaseClick = (product: string, price: string) => {
+    let url = checkoutUrlInitial;
+    if (isSecondChanceExpired) {
+        url = checkoutUrlFinal;
+    } else if (isOfferExpired || hasSeenSecondChance) {
+        url = checkoutUrlSecondChance;
+    }
+
     if (url) {
       window.location.href = url;
     } else {
@@ -66,7 +79,8 @@ export function PurchaseFlow({ isUpsellOpen, setIsUpsellOpen }: PurchaseFlowProp
   
   const handleSecondChancePurchase = () => {
     handleCloseSecondChance(false);
-    handlePurchaseClick("Pacote Mais Vendidos (2ª Chance)", secondChancePrice);
+    // Redirect to second chance checkout
+    window.location.href = checkoutUrlSecondChance;
   }
 
   const handleCloseSecondChance = (isOpen: boolean) => {
@@ -165,7 +179,7 @@ export function PurchaseFlow({ isUpsellOpen, setIsUpsellOpen }: PurchaseFlowProp
                 </ul>
               </CardContent>
               <CardFooter className="flex flex-col gap-4">
-                <Button onClick={() => handlePurchaseClick("Pacote Mais Vendidos", getBestSellerPrice(), 'https://pay.cakto.com.br/7e2kpga')} className="w-full bg-accent text-accent-foreground hover:bg-accent/90" size="lg" disabled={isSecondChanceOpen}>
+                <Button onClick={() => handlePurchaseClick("Pacote Mais Vendidos", getBestSellerPrice())} className="w-full bg-accent text-accent-foreground hover:bg-accent/90" size="lg" disabled={isSecondChanceOpen}>
                   Quero o Pacote Mais Vendido
                 </Button>
                 <div className="w-full p-2 bg-muted/50 rounded-lg">
@@ -253,3 +267,5 @@ export function PurchaseFlow({ isUpsellOpen, setIsUpsellOpen }: PurchaseFlowProp
     </>
   );
 }
+
+    
