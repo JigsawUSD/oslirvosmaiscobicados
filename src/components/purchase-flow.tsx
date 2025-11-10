@@ -48,7 +48,7 @@ export function PurchaseFlow({ isUpsellOpen, setIsUpsellOpen }: PurchaseFlowProp
 
   const handleUpsellAccept = () => {
     setIsUpsellOpen(false);
-    handlePurchaseClick("Pacote Mais Vendidos (Desconto)", "14,90");
+    window.location.href = 'https://pay.cakto.com.br/6ua4q2y';
   };
 
   const handleUpsellDecline = () => {
