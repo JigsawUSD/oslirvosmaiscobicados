@@ -35,8 +35,7 @@ export function PurchaseFlow({ isUpsellOpen, setIsUpsellOpen }: PurchaseFlowProp
   const finalPrice = "39,90";
   
   const checkoutUrlInitial = 'https://pay.cakto.com.br/7e2kpga';
-  // The user did not provide a URL for the 29,90 price, so we will reuse the initial one for now as a fallback.
-  const checkoutUrlSecondChance = 'https://pay.cakto.com.br/7e2kpga';
+  const checkoutUrlSecondChance = 'https://pay.cakto.com.br/u5t96zb';
   const checkoutUrlFinal = 'https://pay.cakto.com.br/wsmgs42';
 
 
