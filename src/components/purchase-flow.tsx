@@ -13,6 +13,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
 import { Check, Star, Clock, AlertTriangle } from "lucide-react";
 import { CountdownTimer } from "./countdown-timer";
+import Image from 'next/image';
 
 interface PurchaseFlowProps {
   isUpsellOpen: boolean;
@@ -122,18 +123,23 @@ export function PurchaseFlow({ isUpsellOpen, setIsUpsellOpen }: PurchaseFlowProp
                 <CardTitle>Pacote Básico</CardTitle>
                 <CardDescription>10 Livros Essenciais</CardDescription>
               </CardHeader>
-              <CardContent className="flex-grow">
-                <p className="text-4xl font-bold mb-4">R$9,90</p>
-                <ul className="space-y-2 text-muted-foreground">
-                  <li className="flex items-center gap-2">
-                    <Check className="h-5 w-5 text-green-500" />
-                    <span>10 livros sobre sucesso e finanças</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <Check className="h-5 w-5 text-green-500" />
-                    <span>Acesso imediato e vitalício</span>
-                  </li>
-                </ul>
+              <CardContent className="flex-grow flex flex-col justify-between">
+                <div>
+                  <p className="text-4xl font-bold mb-4">R$9,90</p>
+                  <ul className="space-y-2 text-muted-foreground">
+                    <li className="flex items-center gap-2">
+                      <Check className="h-5 w-5 text-green-500" />
+                      <span>10 livros sobre sucesso e finanças</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <Check className="h-5 w-5 text-green-500" />
+                      <span>Acesso imediato e vitalício</span>
+                    </li>
+                  </ul>
+                </div>
+                <div className="mt-6">
+                  <Image src="/images/basic-pack-books.png" alt="Pacote de livros básicos" width={400} height={250} className="mx-auto" />
+                </div>
               </CardContent>
               <CardFooter>
                 <Button onClick={handleBasicPackClick} className="w-full" size="lg">
