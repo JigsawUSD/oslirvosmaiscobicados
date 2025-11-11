@@ -62,7 +62,7 @@ export function PurchaseFlow({ isUpsellOpen, setIsUpsellOpen }: PurchaseFlowProp
   };
 
   const handleUpsellAccept = () => {
-    window.location.href = 'https://pay.cakto.com.br/6ua4q2y';
+    window.location.href = 'https://pay.cakto.com.br/tzdmujy_643570';
   };
 
   const handleUpsellDecline = () => {
