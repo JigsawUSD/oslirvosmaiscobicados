@@ -35,7 +35,7 @@ export function PurchaseFlow({ isUpsellOpen, setIsUpsellOpen }: PurchaseFlowProp
   
   const checkoutUrlInitial = 'https://pay.cakto.com.br/wjz9dxz';
   const checkoutUrlSecondChance = 'https://pay.cakto.com.br/3az26a7';
-  const checkoutUrlFinal = 'https://pay.cakto.com.br/wsmgs42';
+  const checkoutUrlFinal = 'https://pay.cakto.com.br/d9yazbi';
 
 
   const handlePurchaseClick = (product: string, price: string) => {
@@ -265,3 +265,5 @@ export function PurchaseFlow({ isUpsellOpen, setIsUpsellOpen }: PurchaseFlowProp
     </>
   );
 }
+
+    
