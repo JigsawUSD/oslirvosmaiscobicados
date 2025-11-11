@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -35,7 +34,7 @@ export function PurchaseFlow({ isUpsellOpen, setIsUpsellOpen }: PurchaseFlowProp
   const finalPrice = "39,90";
   
   const checkoutUrlInitial = 'https://pay.cakto.com.br/wjz9dxz';
-  const checkoutUrlSecondChance = 'https://pay.cakto.com.br/u5t96zb';
+  const checkoutUrlSecondChance = 'https://pay.cakto.com.br/3az26a7';
   const checkoutUrlFinal = 'https://pay.cakto.com.br/wsmgs42';
 
 
@@ -266,6 +265,3 @@ export function PurchaseFlow({ isUpsellOpen, setIsUpsellOpen }: PurchaseFlowProp
     </>
   );
 }
-
-    
-    
