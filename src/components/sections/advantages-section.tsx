@@ -26,9 +26,11 @@ export function AdvantagesSection() {
               <p className="text-muted-foreground">
                 Tenha acesso a uma biblioteca avaliada em mais de <span className="font-bold text-foreground">R$200,00</span> pagando o preço de um lanche. É um investimento mínimo com um retorno gigantesco para sua vida.
               </p>
-              <div className="mt-4 flex items-baseline justify-center text-center gap-2">
-                <span className="text-2xl font-bold text-destructive line-through">R$200+</span>
-                <span className="text-4xl font-extrabold text-green-600">R$9,90</span>
+              <div className="mt-4 p-4 rounded-lg border border-dashed text-center">
+                <div className="flex items-baseline justify-center text-center gap-2">
+                  <span className="text-2xl font-bold text-destructive line-through">R$200+</span>
+                  <span className="text-4xl font-extrabold text-green-600">R$9,90</span>
+                </div>
               </div>
             </CardContent>
           </Card>
