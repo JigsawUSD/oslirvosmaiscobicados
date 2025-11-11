@@ -138,7 +138,7 @@ export function PurchaseFlow({ isUpsellOpen, setIsUpsellOpen }: PurchaseFlowProp
                   </ul>
                 </div>
                 <div className="mt-6">
-                  <Image src="/images/basic-pack-books.png" alt="Pacote de livros básicos" width={400} height={250} className="mx-auto" />
+                  <Image src="https://cdn.dooca.store/81243/products/ujwzf1ys8tpxku9mzfh9mzfxu6ecfzwqswqo.jpg?v=1671300422" alt="Pacote de livros básicos" width={400} height={250} className="mx-auto" />
                 </div>
               </CardContent>
               <CardFooter>
@@ -271,5 +271,3 @@ export function PurchaseFlow({ isUpsellOpen, setIsUpsellOpen }: PurchaseFlowProp
     </>
   );
 }
-
-    
