@@ -149,4 +149,9 @@ export const faqItems: FaqItem[] = [
     question: 'E se eu não gostar?',
     answer: 'Oferecemos uma garantia de satisfação de 7 dias. Se por qualquer motivo você não estiver satisfeito, basta nos contatar para receber o reembolso completo.',
   },
+  {
+    id: 'faq5',
+    question: 'Até quando vou poder acessar os livros após a compra?',
+    answer: 'O acesso aos livros é vitalício.',
+  },
 ];
