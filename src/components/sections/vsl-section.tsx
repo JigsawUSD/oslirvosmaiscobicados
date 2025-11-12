@@ -97,8 +97,8 @@ export function VslSection() {
                 playsInline
                 controls={false}
                 preload="auto"
+                src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
               >
-                <source src="/minha-VSL.mp4" type="video/mp4" />
                 Seu navegador não suporta a tag de vídeo.
               </video>
              <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-4">
