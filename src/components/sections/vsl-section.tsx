@@ -16,7 +16,7 @@ export function VslSection() {
           <div className="relative aspect-video rounded-lg overflow-hidden shadow-2xl bg-black group">
             <iframe
               className="absolute top-0 left-0 w-full h-full"
-              src="https://www.youtube.com/embed/AV8vBaVwvhU?autoplay=1&mute=1&controls=1&loop=1&playlist=AV8vBaVwvhU"
+              src="https://www.youtube.com/embed/AV8vBaVwvhU?autoplay=1&controls=1&loop=1&playlist=AV8vBaVwvhU"
               title="YouTube video player"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
