@@ -1,28 +1,49 @@
-# Firebase Studio
+# Firebase Studio Project: OslirvosMaisCobicados
 
-This is a NextJS starter in Firebase Studio.
+Este é um projeto Next.js criado e gerenciado no Firebase Studio.
 
-## Comandos para Sincronizar com o GitHub
+## Sincronização com o GitHub
 
-Se você precisar (re)configurar seu repositório, use os comandos abaixo no seu terminal.
+Para manter seu código versionado e seguro, siga os comandos abaixo para sincronizar seu projeto com o repositório GitHub.
 
-1. **Inicialize o Git (apenas se for um novo projeto):**
-   ```bash
-   git init
-   git add .
-   git commit -m "first commit"
-   ```
-
-2. **Conecte ao seu repositório remoto:**
-   ```bash
-   git remote add origin https://github.com/JigsawUSD/oslirvosmaiscobicados.git
-   ```
-
-3. **Envie seu código:**
-   ```bash
-   git branch -M main
-   git push -u origin main
-   ```
+**Repositório:** `https://github.com/JigsawUSD/oslirvosmaiscobicados.git`
 
 ---
-*oslirvosmaiscobicados*
+
+### 1. Configuração Inicial (Apenas uma vez)
+
+Se você estiver configurando o repositório pela primeira vez:
+
+```bash
+# Adicione todos os arquivos ao Git
+git add .
+
+# Crie o primeiro commit (registro das alterações)
+git commit -m "Commit inicial do projeto"
+
+# Conecte seu projeto local ao repositório remoto no GitHub
+git remote add origin https://github.com/JigsawUSD/oslirvosmaiscobicados.git
+
+# Defina o branch principal como 'main'
+git branch -M main
+
+# Envie seu código para o GitHub
+git push -u origin main
+```
+
+---
+
+### 2. Enviando Atualizações
+
+Após a configuração inicial, use os seguintes comandos para enviar novas alterações para o GitHub:
+
+```bash
+# Adicione os arquivos que você modificou
+git add .
+
+# Crie um commit descrevendo suas alterações
+git commit -m "Descreva suas alterações aqui"
+
+# Envie as alterações para o branch 'main'
+git push origin main
+```
