@@ -11,6 +11,7 @@ import { TestimonialsSection } from "@/components/sections/testimonials-section"
 import { CtaSection } from "@/components/sections/cta-section";
 import { FaqSection } from "@/components/sections/faq-section";
 import { PurchaseFlow } from "@/components/purchase-flow";
+import AiRecommender from "@/components/ai-recommender";
 
 export default function Home() {
   const [isUpsellOpen, setIsUpsellOpen] = useState(false);
@@ -24,6 +25,7 @@ export default function Home() {
         <AdvantagesSection />
         <BookShowcase />
         <PurchaseFlow isUpsellOpen={isUpsellOpen} setIsUpsellOpen={setIsUpsellOpen} />
+        <AiRecommender />
         <TestimonialsSection />
         <CtaSection onCtaClick={() => setIsUpsellOpen(true)} />
         <FaqSection />
