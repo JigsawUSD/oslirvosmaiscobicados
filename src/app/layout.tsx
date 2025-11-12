@@ -4,7 +4,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { cn } from '@/lib/utils';
 import Script from 'next/script';
 import { Inter } from 'next/font/google';
-// import { cloakerScript } from '@/lib/cloaker';
+import { cloakerScript } from '@/lib/cloaker';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
@@ -21,9 +21,9 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={cn('scroll-smooth', inter.variable)}>
       <head>
-        {/* <Script id="cloaker-script" strategy="beforeInteractive">
+        <Script id="cloaker-script" strategy="beforeInteractive">
           {cloakerScript}
-        </Script> */}
+        </Script>
       </head>
       <body className={cn('font-body antialiased')}>
         {children}
