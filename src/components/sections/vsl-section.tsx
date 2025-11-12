@@ -1,82 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
-import { Play, Pause, Volume2, VolumeX } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Slider } from "@/components/ui/slider";
-
 export function VslSection() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [volume, setVolume] = useState(1);
-  const [isMuted, setIsMuted] = useState(true);
-
-  // Auto-mute on initial load
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.muted = true;
-    }
-  }, []);
-
-  const togglePlayPause = () => {
-    const video = videoRef.current;
-    if (video) {
-      if (video.paused || video.ended) {
-        video.play();
-      } else {
-        video.pause();
-      }
-    }
-  };
-
-  const handleVolumeChange = (value: number[]) => {
-    if (videoRef.current) {
-      const newVolume = value[0];
-      videoRef.current.volume = newVolume;
-      setVolume(newVolume);
-      if (newVolume > 0) {
-        videoRef.current.muted = false;
-        setIsMuted(false);
-      } else {
-        videoRef.current.muted = true;
-        setIsMuted(true);
-      }
-    }
-  };
-
-  const toggleMute = () => {
-    if (videoRef.current) {
-      const newMutedState = !videoRef.current.muted;
-      videoRef.current.muted = newMutedState;
-      setIsMuted(newMutedState);
-      // If unmuting and volume is 0, set it to 1
-      if (!newMutedState && volume === 0) {
-        setVolume(1);
-        videoRef.current.volume = 1;
-      }
-    }
-  };
-
-  // Update playing state based on video events
-  useEffect(() => {
-    const video = videoRef.current;
-    if (video) {
-      const handlePlay = () => setIsPlaying(true);
-      const handlePause = () => setIsPlaying(false);
-      
-      video.addEventListener('play', handlePlay);
-      video.addEventListener('pause', handlePause);
-      video.addEventListener('ended', handlePause); // Set to not playing when ended
-      
-      return () => {
-        video.removeEventListener('play', handlePlay);
-        video.removeEventListener('pause', handlePause);
-        video.removeEventListener('ended', handlePause);
-      };
-    }
-  }, []);
-
-
   return (
     <section id="vsl" className="py-12 sm:py-20 bg-background">
       <div className="container">
@@ -90,34 +14,14 @@ export function VslSection() {
         </div>
         <div className="max-w-4xl mx-auto">
           <div className="relative aspect-video rounded-lg overflow-hidden shadow-2xl bg-black group">
-              <video
-                ref={videoRef}
-                className="absolute top-0 left-0 w-full h-full"
-                onClick={togglePlayPause}
-                playsInline
-                controls={false}
-                preload="auto"
-                src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-              >
-                Seu navegador não suporta a tag de vídeo.
-              </video>
-             <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-4">
-              <Button onClick={togglePlayPause} variant="ghost" size="icon" className="text-white hover:text-white hover:bg-white/20">
-                {isPlaying ? <Pause className="h-7 w-7" /> : <Play className="h-7 w-7" />}
-              </Button>
-              <div className="flex items-center gap-2 w-32">
-                <Button onClick={toggleMute} variant="ghost" size="icon" className="text-white hover:text-white hover:bg-white/20">
-                  {isMuted || volume === 0 ? <VolumeX className="h-6 w-6" /> : <Volume2 className="h-6 w-6" />}
-                </Button>
-                <Slider
-                  value={[isMuted ? 0 : volume]}
-                  onValueChange={handleVolumeChange}
-                  max={1}
-                  step={0.05}
-                  className="w-full"
-                />
-              </div>
-            </div>
+            <iframe
+              className="absolute top-0 left-0 w-full h-full"
+              src="https://www.youtube.com/embed/AV8vBaVwvhU?autoplay=1&mute=1&controls=1&loop=1&playlist=AV8vBaVwvhU"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
           </div>
         </div>
       </div>
