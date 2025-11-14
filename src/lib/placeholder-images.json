@@ -83,6 +83,24 @@
       "description": "Avatar for the third testimonial, a woman in a casual setting.",
       "imageUrl": "https://i.pinimg.com/1200x/96/ea/dd/96eaddb34c1981fa7cd70e005c323fd8.jpg",
       "imageHint": "woman smiling"
+    },
+    {
+      "id": "whatsapp-testimonial-1",
+      "description": "WhatsApp testimonial from Juliano Cliente",
+      "imageUrl": "https://storage.googleapis.com/studio-ux-ch-pro-apps-images/projects/oslivros/whatsapp_testimonial_1.png",
+      "imageHint": "whatsapp chat"
+    },
+    {
+      "id": "whatsapp-testimonial-2",
+      "description": "Second WhatsApp testimonial",
+      "imageUrl": "https://storage.googleapis.com/studio-ux-ch-pro-apps-images/projects/oslivros/whatsapp_testimonial_2.png",
+      "imageHint": "whatsapp chat"
+    },
+    {
+      "id": "whatsapp-testimonial-3",
+      "description": "Third WhatsApp testimonial",
+      "imageUrl": "https://storage.googleapis.com/studio-ux-ch-pro-apps-images/projects/oslivros/whatsapp_testimonial_3.png",
+      "imageHint": "whatsapp chat"
     }
   ]
 }

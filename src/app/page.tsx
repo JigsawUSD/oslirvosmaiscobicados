@@ -12,6 +12,7 @@ import { CtaSection } from "@/components/sections/cta-section";
 import { FaqSection } from "@/components/sections/faq-section";
 import { PurchaseFlow } from "@/components/purchase-flow";
 import AiRecommender from "@/components/ai-recommender";
+import { WhatsappTestimonials } from "@/components/sections/whatsapp-testimonials";
 
 export default function Home() {
   const [isUpsellOpen, setIsUpsellOpen] = useState(false);
@@ -27,6 +28,7 @@ export default function Home() {
         <PurchaseFlow isUpsellOpen={isUpsellOpen} setIsUpsellOpen={setIsUpsellOpen} />
         <AiRecommender />
         <TestimonialsSection />
+        <WhatsappTestimonials />
         <CtaSection onCtaClick={() => setIsUpsellOpen(true)} />
         <FaqSection />
       </main>
