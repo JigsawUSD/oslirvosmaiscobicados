@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useRef, useEffect } from "react";
@@ -96,17 +97,19 @@ export function VslSection() {
         </div>
         <div className="max-w-4xl mx-auto">
           <div ref={containerRef} className="relative aspect-video rounded-lg overflow-hidden shadow-2xl bg-black group">
-            {/* O Iframe é carregado quando o usuário clica para tocar */}
-            <iframe
-              ref={iframeRef}
-              id="vsl-player"
-              className="absolute top-0 left-0 w-full h-full"
-              src={showInitialOverlay ? "" : videoUrl}
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-              allowFullScreen
-            ></iframe>
+            {/* O Iframe é renderizado apenas quando o usuário clica para tocar */}
+            {!showInitialOverlay && (
+              <iframe
+                ref={iframeRef}
+                id="vsl-player"
+                className="absolute top-0 left-0 w-full h-full"
+                src={videoUrl}
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                allowFullScreen
+              ></iframe>
+            )}
             
             {/* Overlay permanente para capturar cliques e controlar a UI */}
             <div 
