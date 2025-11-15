@@ -40,18 +40,23 @@ export function VslSection() {
   };
   
   const handlePlay = () => {
+      // 1. Send the play command FIRST to satisfy browser security
+      postMessageToPlayer("playVideo");
+      
+      // 2. Then enter fullscreen
+      enterFullscreen();
+
+      // 3. Update the state
       setIsPlaying(true);
       if (showInitialOverlay) {
         setShowInitialOverlay(false);
       }
-      postMessageToPlayer("playVideo");
-      enterFullscreen();
   };
 
   const handlePause = () => {
-      setIsPlaying(false);
       postMessageToPlayer("pauseVideo");
       exitFullscreen();
+      setIsPlaying(false);
   };
 
   const handleOverlayClick = () => {
