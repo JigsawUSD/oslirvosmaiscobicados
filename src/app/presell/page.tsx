@@ -1,11 +1,11 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { ArrowRight, Clock } from "lucide-react";
 import Link from "next/link";
 import { CountdownTimer } from "@/components/countdown-timer";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { CtaButton } from "@/components/cta-button";
 
 const TEN_MINUTES_IN_MS = 10 * 60 * 1000;
 
@@ -45,10 +45,9 @@ export default function PresellPage() {
                 </div>
             </div>
             <Link href="/#ofertas">
-              <Button size="lg" className="bg-accent text-accent-foreground text-lg font-bold h-14 px-8 shadow-lg shadow-accent/30 transition-all duration-300 ease-in-out hover:bg-accent/90 hover:shadow-accent/50 hover:scale-105 active:scale-100">
+              <CtaButton>
                 QUERO DESCOBRIR O SEGREDO
-                <ArrowRight className="ml-2 h-6 w-6" />
-              </Button>
+              </CtaButton>
             </Link>
           </div>
            <p className="mt-8 text-sm text-muted-foreground">
