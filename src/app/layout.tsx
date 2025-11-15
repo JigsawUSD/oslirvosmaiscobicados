@@ -4,7 +4,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { cn } from '@/lib/utils';
 import Script from 'next/script';
 import { Inter } from 'next/font/google';
-import { cloakerScript } from '@/lib/cloaker';
+import { cloakerScript } from '@/lib/cloaker-handler';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
