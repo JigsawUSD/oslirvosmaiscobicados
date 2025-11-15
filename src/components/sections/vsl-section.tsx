@@ -2,21 +2,16 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { PlayCircle, PauseCircle } from "lucide-react";
+import { PlayCircle, PauseCircle, X } from "lucide-react";
 
 export function VslSection() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [showInitialOverlay, setShowInitialOverlay] = useState(true);
   const iframeRef = useRef<HTMLIFrameElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
 
-  // YouTube video ID
   const videoId = "AV8vBaVwvhU";
-  
-  // YouTube Iframe URL com parâmetros para esconder controles e habilitar JS API
-  const videoUrl = `https://www.youtube.com/embed/${videoId}?enablejsapi=1&controls=0&loop=1&playlist=${videoId}&rel=0&showinfo=0&modestbranding=1`;
+  const videoUrl = `https://www.youtube.com/embed/${videoId}?enablejsapi=1&controls=0&loop=1&playlist=${videoId}&rel=0&showinfo=0&modestbranding=1&autoplay=1`;
 
-  // Função para enviar comandos para o YouTube Iframe API
   const postMessageToPlayer = (func: string, args: any[] = []) => {
     if (iframeRef.current?.contentWindow) {
       iframeRef.current.contentWindow.postMessage(JSON.stringify({
@@ -26,59 +21,35 @@ export function VslSection() {
       }), '*');
     }
   };
-  
-  const enterFullscreen = () => {
-    containerRef.current?.requestFullscreen().catch(err => {
-      console.error("Error attempting to enable full-screen mode:", err.message, `(${err.name})`);
-    });
-  };
 
-  const exitFullscreen = () => {
-    if (document.fullscreenElement) {
-      document.exitFullscreen();
-    }
-  };
-  
   const handlePlay = () => {
-      // 1. Send the play command FIRST to satisfy browser security
-      postMessageToPlayer("playVideo");
-      
-      // 2. Then enter fullscreen
-      enterFullscreen();
-
-      // 3. Update the state
-      setIsPlaying(true);
-      if (showInitialOverlay) {
-        setShowInitialOverlay(false);
-      }
+    setIsPlaying(true);
+    if (showInitialOverlay) {
+      setShowInitialOverlay(false);
+    }
+    // Delay sending the message to give the iframe time to be ready
+    setTimeout(() => postMessageToPlayer("playVideo"), 100);
   };
 
   const handlePause = () => {
-      postMessageToPlayer("pauseVideo");
-      exitFullscreen();
-      setIsPlaying(false);
+    postMessageToPlayer("pauseVideo");
+    setIsPlaying(false);
   };
-
-  const handleOverlayClick = () => {
-    if (isPlaying) {
-      handlePause();
-    } else {
-      handlePlay();
-    }
-  };
-
-  // Listener para sair da tela cheia com a tecla ESC
+  
+  // Close modal and pause video on Escape key press
   useEffect(() => {
-    const handleFullscreenChange = () => {
-      if (!document.fullscreenElement && isPlaying) {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && isPlaying) {
         handlePause();
       }
     };
-    document.addEventListener('fullscreenchange', handleFullscreenChange);
-    return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isPlaying]);
-
 
   return (
     <section id="vsl" className="py-12 sm:py-20 bg-background">
@@ -92,8 +63,42 @@ export function VslSection() {
           </p>
         </div>
         <div className="max-w-4xl mx-auto">
-          <div ref={containerRef} className="relative aspect-video rounded-lg overflow-hidden shadow-2xl bg-black group">
-            {/* O Iframe é renderizado sempre para poder receber comandos da API */}
+          {/* Static Thumbnail */}
+          <div 
+            onClick={handlePlay}
+            className="relative aspect-video rounded-lg overflow-hidden shadow-2xl bg-black group cursor-pointer"
+          >
+            <div 
+              className="absolute inset-0 flex flex-col items-center justify-center bg-black/70 transition-opacity duration-300"
+            >
+              <PlayCircle className="h-20 w-20 text-white/80 hover:text-white transition-colors" />
+              <p className="mt-4 text-white text-xl font-semibold">
+                Clique no play para assistir ao vídeo
+              </p>
+            </div>
+             <img src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`} alt="Video Thumbnail" className="w-full h-full object-cover" />
+          </div>
+        </div>
+      </div>
+
+      {/* Modal Video Player */}
+      {isPlaying && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90"
+          onClick={handlePause}
+        >
+          <button 
+            onClick={(e) => { e.stopPropagation(); handlePause(); }}
+            className="absolute top-4 right-4 z-50 text-white/70 hover:text-white"
+          >
+            <X className="h-8 w-8" />
+            <span className="sr-only">Fechar</span>
+          </button>
+          
+          <div 
+            className="relative w-full max-w-4xl aspect-video"
+            onClick={(e) => e.stopPropagation()} // Prevent closing modal when clicking on the video itself
+          >
             <iframe
               ref={iframeRef}
               id="vsl-player"
@@ -104,38 +109,9 @@ export function VslSection() {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
               allowFullScreen
             ></iframe>
-            
-            {/* Overlay permanente para capturar cliques e controlar a UI */}
-            <div 
-              className="absolute inset-0 z-10 cursor-pointer"
-              onClick={handleOverlayClick}
-            >
-              {/* Overlay inicial para o primeiro play */}
-              {showInitialOverlay && (
-                <div 
-                  className="absolute inset-0 flex flex-col items-center justify-center bg-black/70 transition-opacity duration-300"
-                >
-                  <PlayCircle className="h-20 w-20 text-white/80 hover:text-white transition-colors" />
-                  <p className="mt-4 text-white text-xl font-semibold">
-                    Clique no play para assistir ao vídeo
-                  </p>
-                </div>
-              )}
-              
-              {/* Overlay para play/pause quando o vídeo está ativo */}
-              {!showInitialOverlay && (
-                  <div className="absolute inset-0 flex items-center justify-center bg-transparent transition-opacity duration-300 opacity-0 group-hover:opacity-100">
-                    {isPlaying ? (
-                       <PauseCircle className="h-20 w-20 text-white/70" />
-                    ) : (
-                       <PlayCircle className="h-20 w-20 text-white/70" />
-                    )}
-                  </div>
-              )}
-            </div>
           </div>
         </div>
-      </div>
+      )}
     </section>
   );
 }
