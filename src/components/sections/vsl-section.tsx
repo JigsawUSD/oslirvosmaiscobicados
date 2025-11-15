@@ -14,19 +14,23 @@ export function VslSection() {
   const videoId = "AV8vBaVwvhU";
   
   // YouTube Iframe URL com parâmetros para esconder controles e habilitar JS API
-  const videoUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&controls=0&loop=1&playlist=${videoId}&enablejsapi=1&rel=0&showinfo=0&modestbranding=1`;
+  const videoUrl = `https://www.youtube.com/embed/${videoId}?enablejsapi=1&controls=0&loop=1&playlist=${videoId}&rel=0&showinfo=0&modestbranding=1`;
 
   // Função para enviar comandos para o YouTube Iframe API
   const postMessageToPlayer = (func: string, args: any[] = []) => {
-    iframeRef.current?.contentWindow?.postMessage(JSON.stringify({
-      event: 'command',
-      func: func,
-      args: args,
-    }), '*');
+    if (iframeRef.current?.contentWindow) {
+      iframeRef.current.contentWindow.postMessage(JSON.stringify({
+        event: 'command',
+        func: func,
+        args: args,
+      }), '*');
+    }
   };
   
   const enterFullscreen = () => {
-    containerRef.current?.requestFullscreen();
+    containerRef.current?.requestFullscreen().catch(err => {
+      console.error("Error attempting to enable full-screen mode:", err.message, `(${err.name})`);
+    });
   };
 
   const exitFullscreen = () => {
@@ -36,22 +40,18 @@ export function VslSection() {
   };
   
   const handlePlay = () => {
-    if (!isPlaying) {
       setIsPlaying(true);
       if (showInitialOverlay) {
         setShowInitialOverlay(false);
       }
       postMessageToPlayer("playVideo");
       enterFullscreen();
-    }
   };
 
   const handlePause = () => {
-    if (isPlaying) {
       setIsPlaying(false);
       postMessageToPlayer("pauseVideo");
       exitFullscreen();
-    }
   };
 
   const handleOverlayClick = () => {
@@ -62,20 +62,11 @@ export function VslSection() {
     }
   };
 
-  // Garante que o src do iframe seja definido apenas no cliente
-  useEffect(() => {
-    if (isPlaying && iframeRef.current && !iframeRef.current.src) {
-        iframeRef.current.src = videoUrl;
-    }
-  }, [isPlaying, videoUrl]);
-
   // Listener para sair da tela cheia com a tecla ESC
   useEffect(() => {
     const handleFullscreenChange = () => {
-      if (!document.fullscreenElement) {
-        if (isPlaying) {
-          handlePause();
-        }
+      if (!document.fullscreenElement && isPlaying) {
+        handlePause();
       }
     };
     document.addEventListener('fullscreenchange', handleFullscreenChange);
@@ -97,19 +88,17 @@ export function VslSection() {
         </div>
         <div className="max-w-4xl mx-auto">
           <div ref={containerRef} className="relative aspect-video rounded-lg overflow-hidden shadow-2xl bg-black group">
-            {/* O Iframe é renderizado apenas quando o usuário clica para tocar */}
-            {!showInitialOverlay && (
-              <iframe
-                ref={iframeRef}
-                id="vsl-player"
-                className="absolute top-0 left-0 w-full h-full"
-                src={videoUrl}
-                title="YouTube video player"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-                allowFullScreen
-              ></iframe>
-            )}
+            {/* O Iframe é renderizado sempre para poder receber comandos da API */}
+            <iframe
+              ref={iframeRef}
+              id="vsl-player"
+              className="absolute top-0 left-0 w-full h-full"
+              src={videoUrl}
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+              allowFullScreen
+            ></iframe>
             
             {/* Overlay permanente para capturar cliques e controlar a UI */}
             <div 
