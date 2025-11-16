@@ -2,15 +2,16 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { PlayCircle, PauseCircle, X } from "lucide-react";
+import { PlayCircle, X } from "lucide-react";
 
 export function VslSection() {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [showInitialOverlay, setShowInitialOverlay] = useState(true);
   const iframeRef = useRef<HTMLIFrameElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const videoId = "AV8vBaVwvhU";
-  const videoUrl = `https://www.youtube.com/embed/${videoId}?enablejsapi=1&controls=0&loop=1&playlist=${videoId}&rel=0&showinfo=0&modestbranding=1&autoplay=1`;
+  // Added playsinline=1 for better mobile experience and start=1 as per your example
+  const videoUrl = `https://www.youtube.com/embed/${videoId}?enablejsapi=1&controls=0&loop=1&playlist=${videoId}&rel=0&showinfo=0&modestbranding=1&autoplay=1&playsinline=1&start=1`;
 
   const postMessageToPlayer = (func: string, args: any[] = []) => {
     if (iframeRef.current?.contentWindow) {
@@ -24,9 +25,6 @@ export function VslSection() {
 
   const handlePlay = () => {
     setIsPlaying(true);
-    if (showInitialOverlay) {
-      setShowInitialOverlay(false);
-    }
     // Delay sending the message to give the iframe time to be ready
     setTimeout(() => postMessageToPlayer("playVideo"), 100);
   };
@@ -89,16 +87,21 @@ export function VslSection() {
         >
           <button 
             onClick={(e) => { e.stopPropagation(); handlePause(); }}
-            className="absolute top-4 right-4 z-50 text-white/70 hover:text-white"
+            className="absolute top-4 right-4 z-[99999] text-white/70 hover:text-white"
           >
             <X className="h-8 w-8" />
             <span className="sr-only">Fechar</span>
           </button>
           
           <div 
+            ref={containerRef}
             className="relative w-full max-w-4xl aspect-video"
             onClick={(e) => e.stopPropagation()} // Prevent closing modal when clicking on the video itself
           >
+            {/* Invisible Overlays to block YouTube controls */}
+            <div className="absolute top-0 left-0 h-[20%] md:h-[30%] w-full z-[9999]" />
+            <div className="absolute bottom-0 left-0 h-[20%] w-full z-[9999]" />
+            
             <iframe
               ref={iframeRef}
               id="vsl-player"
@@ -106,7 +109,7 @@ export function VslSection() {
               src={videoUrl}
               title="YouTube video player"
               frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
             ></iframe>
           </div>
