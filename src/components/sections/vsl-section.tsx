@@ -3,12 +3,15 @@
 import { useState, useRef, useEffect } from "react";
 import { PlayCircle, X } from "lucide-react";
 
+const VSL_DURATION_IN_MS = 2 * 60 * 1000 + 20 * 1000; // 2 minutos e 20 segundos
+
 export function VslSection() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [videoHasEnded, setVideoHasEnded] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const currentTimeRef = useRef<number>(0);
+  const endVideoTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const videoId = "AV8vBaVwvhU";
   const videoUrl = `https://www.youtube.com/embed/${videoId}?enablejsapi=1&controls=0&loop=1&playlist=${videoId}&rel=0&showinfo=0&modestbranding=1&autoplay=1&playsinline=1`;
@@ -22,7 +25,7 @@ export function VslSection() {
       }), '*');
     }
   };
-  
+
   const handlePlay = () => {
     const savedTime = localStorage.getItem('vsl-current-time');
     // Se o video já terminou, começa do zero.
@@ -37,12 +40,25 @@ export function VslSection() {
       postMessageToPlayer("seekTo", [startTime, true]);
       postMessageToPlayer("playVideo");
     }, 150);
+
+    // Inicia o timer de segurança
+    if (endVideoTimeoutRef.current) {
+        clearTimeout(endVideoTimeoutRef.current);
+    }
+    endVideoTimeoutRef.current = setTimeout(() => {
+        setVideoHasEnded(true);
+    }, VSL_DURATION_IN_MS);
   };
 
   const handlePause = () => {
     postMessageToPlayer("getCurrentTime"); 
     postMessageToPlayer("pauseVideo");
     setIsPlaying(false);
+     // Limpa o timer de segurança ao pausar
+    if (endVideoTimeoutRef.current) {
+        clearTimeout(endVideoTimeoutRef.current);
+        endVideoTimeoutRef.current = null;
+    }
   };
   
   useEffect(() => {
@@ -73,6 +89,9 @@ export function VslSection() {
            // O estado 0 significa que o vídeo terminou
            if(data.info?.playerState === 0) {
               setVideoHasEnded(true);
+               if (endVideoTimeoutRef.current) {
+                    clearTimeout(endVideoTimeoutRef.current);
+               }
            }
         }
       } catch (error) {
@@ -84,6 +103,9 @@ export function VslSection() {
     
     return () => {
       window.removeEventListener('message', handleMessage);
+       if (endVideoTimeoutRef.current) {
+        clearTimeout(endVideoTimeoutRef.current);
+      }
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -135,7 +157,12 @@ export function VslSection() {
           <div 
             ref={containerRef}
             className="relative w-full max-w-4xl aspect-video"
-            onClick={(e) => { e.stopPropagation(); handlePause(); }}
+            onClick={(e) => { 
+                if (videoHasEnded) {
+                    e.stopPropagation(); 
+                    handlePause(); 
+                }
+            }}
           >
             <div className="absolute top-0 left-0 h-[20%] md:h-[30%] w-full z-[9999]" />
             <div className="absolute bottom-0 left-0 h-[20%] w-full z-[9999]" />
