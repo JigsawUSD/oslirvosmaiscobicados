@@ -7,7 +7,7 @@ export default function TermosDeUsoPage() {
       <Header />
       <main className="flex-1 py-12 sm:py-20">
         <div className="container max-w-4xl">
-          <h1 className="text-3xl sm:text-4xl font-bold text-primary mb-6">
+          <h1 className="text-3xl sm:text-4xl font-bold text-primary mb-6 text-center">
             Termos de Uso
           </h1>
           <div className="prose dark:prose-invert max-w-none text-muted-foreground space-y-4">
