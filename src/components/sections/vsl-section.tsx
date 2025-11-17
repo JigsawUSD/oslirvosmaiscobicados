@@ -6,6 +6,7 @@ import { PlayCircle, X } from "lucide-react";
 
 export function VslSection() {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [videoHasEnded, setVideoHasEnded] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const currentTimeRef = useRef<number>(0);
@@ -25,63 +26,69 @@ export function VslSection() {
   
   const handlePlay = () => {
     const savedTime = localStorage.getItem('vsl-current-time');
-    const startTime = savedTime ? parseFloat(savedTime) : 0;
-    
+    // Se o video já terminou, começa do zero.
+    const startTime = videoHasEnded ? 0 : (savedTime ? parseFloat(savedTime) : 0);
+
     setIsPlaying(true);
+    if(videoHasEnded) {
+      setVideoHasEnded(false);
+    }
 
     setTimeout(() => {
-      // O seekTo precisa de um pequeno delay para funcionar após o play
       postMessageToPlayer("seekTo", [startTime, true]);
       postMessageToPlayer("playVideo");
     }, 150);
   };
 
   const handlePause = () => {
-    // A API do YouTube nos enviará o tempo atual através do message listener
+    postMessageToPlayer("getCurrentTime"); 
     postMessageToPlayer("pauseVideo");
-    postMessageToPlayer("getCurrentTime"); // Solicita o tempo atual ao pausar
+    setIsPlaying(false);
   };
   
-  // Efeito para fechar o modal e pausar o vídeo com a tecla 'ESC'
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape' && isPlaying) {
-        handlePause();
+        // Só permite fechar com ESC se o vídeo terminou
+        if(videoHasEnded) {
+          handlePause();
+        }
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isPlaying]);
+  }, [isPlaying, videoHasEnded]);
   
-  // Efeito para ouvir mensagens do iframe (para obter o tempo atual)
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
       if (event.origin !== "https://www.youtube.com") return;
       try {
         const data = JSON.parse(event.data);
-        if (data.event === 'infoDelivery' && data.info?.currentTime) {
-           const newTime = data.info.currentTime;
-           currentTimeRef.current = newTime;
-           localStorage.setItem('vsl-current-time', newTime.toString());
+        if (data.event === 'infoDelivery') {
+           if(data.info?.currentTime) {
+             const newTime = data.info.currentTime;
+             currentTimeRef.current = newTime;
+             localStorage.setItem('vsl-current-time', newTime.toString());
+           }
+           // O estado 0 significa que o vídeo terminou
+           if(data.info?.playerState === 0) {
+              setVideoHasEnded(true);
+              handlePause();
+           }
         }
       } catch (error) {
-        // Ignorar erros de parsing que não são do nosso interesse
+        // Ignorar erros
       }
     };
     
     window.addEventListener('message', handleMessage);
     
-    // Quando pausamos, o estado isPlaying muda, então pausamos o vídeo
-    // e limpamos o listener de mensagem se o componente for desmontado
-    if (!isPlaying && currentTimeRef.current > 0) {
-      localStorage.setItem('vsl-current-time', currentTimeRef.current.toString());
-    }
-
     return () => {
       window.removeEventListener('message', handleMessage);
     };
-  }, [isPlaying]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
 
   return (
@@ -118,13 +125,15 @@ export function VslSection() {
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/90"
           onClick={handlePause}
         >
-          <button 
-            onClick={(e) => { e.stopPropagation(); handlePause(); }}
-            className="absolute top-4 right-4 z-[99999] text-white/70 hover:text-white"
-          >
-            <X className="h-8 w-8" />
-            <span className="sr-only">Fechar</span>
-          </button>
+          {videoHasEnded && (
+            <button 
+              onClick={(e) => { e.stopPropagation(); handlePause(); }}
+              className="absolute top-4 right-4 z-[99999] text-white/70 hover:text-white"
+            >
+              <X className="h-8 w-8" />
+              <span className="sr-only">Fechar</span>
+            </button>
+          )}
           
           <div 
             ref={containerRef}
