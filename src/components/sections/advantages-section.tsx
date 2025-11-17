@@ -5,7 +5,7 @@ export function AdvantagesSection() {
   return (
     <section id="advantages" className="py-12 sm:py-20 bg-white dark:bg-card">
       <div className="container">
-        <div className="max-w-3xl mx-auto text-lg text-center text-muted-foreground space-y-6 mb-12">
+        <div className="max-w-3xl mx-auto p-6 bg-card rounded-lg border-2 border-primary/20 shadow-lg text-lg text-center text-muted-foreground space-y-6 mb-12">
            <div className="text-center">
              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-primary">
                 Conjunto de Livros Mais Cobiçados de Finanças
