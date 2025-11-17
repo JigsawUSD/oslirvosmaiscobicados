@@ -10,7 +10,6 @@ import { TestimonialsSection } from "@/components/sections/testimonials-section"
 import { CtaSection } from "@/components/sections/cta-section";
 import { FaqSection } from "@/components/sections/faq-section";
 import { PurchaseFlow } from "@/components/purchase-flow";
-import AiRecommender from "@/components/ai-recommender";
 import { WhatsappTestimonials } from "@/components/sections/whatsapp-testimonials";
 import Link from "next/link";
 import { CtaButton } from "@/components/cta-button";
@@ -35,7 +34,6 @@ export default function Home() {
         <AdvantagesSection />
         <BookShowcase />
         <PurchaseFlow isUpsellOpen={isUpsellOpen} setIsUpsellOpen={setIsUpsellOpen} />
-        <AiRecommender />
         <TestimonialsSection />
         <WhatsappTestimonials />
         <CtaSection onCtaClick={() => setIsUpsellOpen(true)} />
