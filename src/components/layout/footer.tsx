@@ -24,7 +24,7 @@ export function Footer() {
                  <div className="max-w-3xl mx-auto p-4 bg-background/10 rounded-lg">
                     <h4 className="font-bold text-sm text-primary-foreground/80 mb-2">Cláusula Facebook</h4>
                     <p className="text-xs text-primary-foreground/60">
-                        Este site não é afiliado ao Facebook ou a qualquer entidade do Facebook. Depois que você sair do Facebook, a responsabilidade não é deles e sim do nosso site. Fazemos todos os esforços para indicar claramente e mostrar todas as provas do produto e usamos resultados reais.
+                        Este site não faz parte do Facebook ou do Facebook Inc. Além disso, este site não é endossado pelo Facebook de nenhuma forma. Os resultados apresentados são exemplos reais, mas variam de pessoa para pessoa.
                     </p>
                  </div>
             </div>
