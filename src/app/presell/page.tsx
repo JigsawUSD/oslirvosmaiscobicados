@@ -44,11 +44,13 @@ export default function PresellPage() {
                     />
                 </div>
             </div>
-            <Link href="/#vsl">
-              <CtaButton>
-                QUERO DESCOBRIR O SEGREDO
-              </CtaButton>
-            </Link>
+            <div className="flex justify-center">
+              <Link href="/#vsl">
+                <CtaButton>
+                  QUERO DESCOBRIR O SEGREDO
+                </CtaButton>
+              </Link>
+            </div>
           </div>
            <p className="mt-8 text-sm text-muted-foreground">
             Clique no botão acima para ser redirecionado a uma página com uma oferta que você não vai acreditar.
