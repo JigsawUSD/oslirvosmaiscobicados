@@ -6,10 +6,11 @@ export function AdvantagesSection() {
     <section id="advantages" className="py-12 sm:py-20 bg-white dark:bg-card">
       <div className="container">
         <div className="max-w-3xl mx-auto text-lg text-muted-foreground space-y-6 mb-12">
-            <div className="flex items-center gap-3 text-2xl font-bold text-primary">
-                <Library className="h-8 w-8" />
-                <h3>Conjunto de Livros Mais Cobiçados de Finanças</h3>
-            </div>
+           <div className="text-center">
+             <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-primary">
+                Conjunto de Livros Mais Cobiçados de Finanças
+             </h2>
+           </div>
           <p>
             Dentro deste conjunto, você terá acesso imediato a alguns dos livros mais desejados e estudados da área financeira. São obras que reúnem ideias, estratégias e conhecimentos capazes de mudar sua forma de enxergar dinheiro — sem promessas, sem fórmulas mágicas.
           </p>
