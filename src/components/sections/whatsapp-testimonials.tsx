@@ -23,8 +23,6 @@ function findImage(id: string): ImagePlaceholder {
 
 const whatsappTestimonials: ImagePlaceholder[] = [
   findImage("whatsapp-testimonial-1"),
-  findImage("whatsapp-testimonial-2"),
-  findImage("whatsapp-testimonial-3"),
   findImage("whatsapp-testimonial-4"),
 ];
 
