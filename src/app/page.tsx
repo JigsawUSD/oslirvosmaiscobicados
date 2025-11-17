@@ -14,6 +14,7 @@ import AiRecommender from "@/components/ai-recommender";
 import { WhatsappTestimonials } from "@/components/sections/whatsapp-testimonials";
 import Link from "next/link";
 import { CtaButton } from "@/components/cta-button";
+import { StorySection } from "@/components/sections/story-section";
 
 export default function Home() {
   const [isUpsellOpen, setIsUpsellOpen] = useState(false);
@@ -30,6 +31,7 @@ export default function Home() {
             </CtaButton>
           </Link>
         </div>
+        <StorySection />
         <AdvantagesSection />
         <BookShowcase />
         <PurchaseFlow isUpsellOpen={isUpsellOpen} setIsUpsellOpen={setIsUpsellOpen} />
