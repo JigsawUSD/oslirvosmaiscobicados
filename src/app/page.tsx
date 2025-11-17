@@ -27,7 +27,7 @@ export default function Home() {
         <div className="py-8 text-center bg-background">
           <Link href="#ofertas">
             <CtaButton>
-              QUERO MEU PACOTE
+              QUERO COMEÇAR A MUDAR DE VIDA HOJE
             </CtaButton>
           </Link>
         </div>
