@@ -74,7 +74,6 @@ export function VslSection() {
            // O estado 0 significa que o vídeo terminou
            if(data.info?.playerState === 0) {
               setVideoHasEnded(true);
-              handlePause();
            }
         }
       } catch (error) {
@@ -123,7 +122,6 @@ export function VslSection() {
       {isPlaying && (
         <div 
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/90"
-          onClick={handlePause}
         >
           {videoHasEnded && (
             <button 
@@ -138,7 +136,7 @@ export function VslSection() {
           <div 
             ref={containerRef}
             className="relative w-full max-w-4xl aspect-video"
-            onClick={(e) => e.stopPropagation()}
+            onClick={(e) => { e.stopPropagation(); handlePause(); }}
           >
             <div className="absolute top-0 left-0 h-[20%] md:h-[30%] w-full z-[9999]" />
             <div className="absolute bottom-0 left-0 h-[20%] w-full z-[9999]" />
