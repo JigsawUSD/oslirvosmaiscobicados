@@ -44,7 +44,7 @@ export default function PresellPage() {
                     />
                 </div>
             </div>
-            <Link href="/#ofertas">
+            <Link href="/#vsl">
               <CtaButton>
                 QUERO DESCOBRIR O SEGREDO
               </CtaButton>
