@@ -101,6 +101,12 @@
       "description": "Third WhatsApp testimonial",
       "imageUrl": "https://storage.googleapis.com/studio-ux-ch-pro-apps-images/projects/oslivros/whatsapp_testimonial_3.png",
       "imageHint": "whatsapp chat"
+    },
+    {
+      "id": "whatsapp-testimonial-4",
+      "description": "Fourth WhatsApp testimonial",
+      "imageUrl": "https://zeoob.com/generated-images/zeoob.com_tn1ltq1a6g_photo.png",
+      "imageHint": "whatsapp chat"
     }
   ]
 }
