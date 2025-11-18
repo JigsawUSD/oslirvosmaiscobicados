@@ -21,7 +21,7 @@ export default function PresellPage() {
         <div className="container max-w-3xl py-12 sm:py-20">
           
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-primary mb-8 text-center">
-            Você Realmente Acredita que o Sucesso é Sorte?
+            O Que Faltava Para Dar Certo Não Era Sorte. Era Isso.
           </h1>
 
           {presellImage && (
