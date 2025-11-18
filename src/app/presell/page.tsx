@@ -38,19 +38,53 @@ export default function PresellPage() {
           )}
           
           <div className="prose dark:prose-invert max-w-none text-lg text-muted-foreground space-y-6 text-left">
-            <p>Depois de abrir alguns negócios ao longo dos anos e passar por situações desafiadoras, eu percebi que existia algo em comum em todas as minhas tentativas: eu sempre agia rápido demais e aprendia tarde demais.</p>
-            <p>Chegou um momento em que eu realmente parei para refletir. Não era sobre sorte, não era sobre o mercado. Era sobre preparo.</p>
-            <p>Em uma dessas fases complicadas, sentei comigo mesmo e fiz a pergunta que eu evitava há muito tempo: “O que, de fato, eu não estou enxergando?”</p>
-            <p className="font-bold text-foreground">Eu não estava sem capacidade. Eu estava sem direção.</p>
-            <p>Foi aí que eu decidi tentar novamente — mas de uma forma totalmente diferente. Antes de qualquer ação, eu precisava aprender. E, para isso, pedi ajuda a um amigo. Contei a ele minha intenção de estudar, ajustar minha mentalidade e agir de forma mais estratégica. Ele me apoiou.</p>
-            <p>Com aquele voto de confiança, eu tracei um plano simples: primeiro conhecimento, depois execução.</p>
-            <p className="p-6 bg-card border-l-4 border-primary rounded-r-lg shadow">Comecei a estudar temas que nunca tinha dado atenção: gestão, tomada de decisão, organização financeira, estratégia, comportamento e visão de longo prazo. E foi nesse processo que encontrei algo que fez toda diferença na minha forma de pensar e de agir: um conjunto de livros que se tornou essencial nessa virada.</p>
-            <p>Esses livros não eram sobre atalhos, nem sobre fórmulas mágicas. Eram sobre clareza. Sobre entender como tomar decisões melhores, como analisar cenários e como construir algo sólido com base em conhecimento real.</p>
-            <p>A segunda parte foi aplicar isso com consistência. Nada de pressa. Nada de impulsividade. Eu decidi seguir um plano, aprender um pouco todos os dias e aplicar com calma e foco.</p>
-            <p>Com o tempo, tudo ficou mais claro. As escolhas ficaram mais alinhadas. As decisões ficaram mais seguras. E, aos poucos, os resultados começaram a aparecer.</p>
-            <p className="text-xl font-semibold text-center">Hoje, olhando para trás, percebo que existiam apenas duas coisas que realmente faltavam nas minhas tentativas anteriores: entender antes de agir, e agir com constância.</p>
-            <p>E é exatamente isso que compartilho com você agora: o mesmo conjunto de livros que me ajudou a desenvolver clareza, raciocínio estratégico e confiança para tomar decisões mais acertadas. Não é sobre prometer resultados. É sobre oferecer conhecimento que abre caminhos.</p>
-            <p className="text-xl font-bold text-center text-primary">Se você está em fase de construção, recomeço ou reorganização, talvez esse seja o ponto de partida que faltava — assim como faltava pra mim.</p>
+            <p>Depois de abrir alguns negócios ao longo dos anos e passar por situações desafiadoras, eu percebi algo que demorou muito para cair a ficha: eu sempre vivi nos extremos.</p>
+            <p>Ou eu agia rápido demais, ou me preparava tanto que não saía do lugar.</p>
+            <p>Foi numa das fases mais difíceis que eu realmente sentei e me perguntei:</p>
+            <p>“O que, de fato, eu não estou enxergando?”</p>
+            <p>Eu não estava sem capacidade.</p>
+            <p>Eu estava sem equilíbrio.</p>
+            <p>Por muito tempo, eu fui aquela pessoa que se empolgava com qualquer oportunidade e já entrava de cabeça.</p>
+            <p>Agia rápido, mudava rápido… e errava rápido.</p>
+            <p>Eu confundia pressa com coragem.</p>
+            <p>Só que muita ação sem preparo leva apenas a uma coisa:</p>
+            <p>prejuízos desnecessários.</p>
+            <p>É como dirigir à noite sem faróis — você até se move, mas não sabe para onde.</p>
+            <p>Depois disso, virei o oposto.</p>
+            <p>Passei a estudar tudo, analisar tudo, planejar cada detalhe.</p>
+            <p>E, no final das contas, nada acontecia.</p>
+            <p>Eu sempre achava que faltava aprender mais alguma coisa antes de agir.</p>
+            <p>E isso me manteve parado.</p>
+            <p>E aí percebi o outro extremo:</p>
+            <p>muito preparo e pouca ação geram estagnação.</p>
+            <p>Você aprende… mas não evolui.</p>
+            <p>Foi nessa reflexão que eu decidi tentar novamente — mas dessa vez de forma diferente.</p>
+            <p>Procurei um amigo, expliquei que queria reorganizar minha mente antes de dar qualquer passo e pedi ajuda para começar com mais consciência. Ele entendeu e me apoiou.</p>
+            <p>Com esse voto de confiança, tracei um plano simples:</p>
+            <p>primeiro clareza, depois movimento.</p>
+            <p>Comecei a estudar temas que nunca tinha dado importância: estratégia, tomada de decisão, organização financeira, mentalidade e comportamento.</p>
+            <p>E foi nesse processo que encontrei algo que realmente fez diferença:</p>
+            <p>um conjunto de livros que ampliou minha visão e me ajudou a entender como tomar decisões com mais segurança e menos impulso.</p>
+            <p>Esses livros não prometiam atalhos.</p>
+            <p>Eles entregavam clareza.</p>
+            <p>Me ajudavam a enxergar o caminho antes de andar por ele.</p>
+            <p>Com esse entendimento, veio a parte mais importante: agir.</p>
+            <p>Não com pressa, não com impulsividade.</p>
+            <p>Mas com direção.</p>
+            <p>E, pela primeira vez, eu consegui encontrar o meio-termo.</p>
+            <p>Entendi antes de fazer.</p>
+            <p>E fiz sem parar de entender.</p>
+            <p>Com o tempo, tudo começou a se encaixar.</p>
+            <p>As decisões se tornaram mais conscientes, as ideias ficaram mais organizadas, e o caminho que antes parecia confuso ficou mais nítido.</p>
+            <p>Hoje eu vejo que tudo mudou no momento em que eu encontrei o equilíbrio entre estudo e ação.</p>
+            <p>Porque um negócio só cresce quando você cresce junto.</p>
+            <p>E para crescer, você precisa caminhar — mas sabendo onde está pisando.</p>
+            <p>É exatamente esse tipo de clareza que quero compartilhar com você agora:</p>
+            <p>o mesmo conjunto de livros que me ajudou a pensar melhor, decidir melhor e agir com mais confiança.</p>
+            <p>Não é sobre fórmulas.</p>
+            <p>É sobre consciência.</p>
+            <p>Às vezes, a virada não está nem na pressa… nem na espera.</p>
+            <p>Está no equilíbrio entre as duas.</p>
           </div>
 
           <div className="mt-10 p-6 bg-card border-2 border-dashed border-primary/50 rounded-lg shadow-lg text-center">
