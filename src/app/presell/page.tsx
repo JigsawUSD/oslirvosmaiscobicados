@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from "next/image";
@@ -36,13 +35,14 @@ export default function PresellPage() {
             </div>
           )}
           
-            <div className="my-8 flex flex-col items-center gap-4">
-              <div className="w-full max-w-md">
-                <p className="text-center text-sm text-muted-foreground mb-2">Prefere ouvir? Dê o play abaixo.</p>
-                <audio controls src="/audio/presell-story.mp3" className="w-full">
-                  Seu navegador não suporta o elemento de áudio.
-                </audio>
-              </div>
+          <div className="my-8 flex flex-col items-center gap-4">
+            <div className="w-full max-w-md">
+              <p className="text-center text-sm text-muted-foreground mb-2">Prefere ouvir? Dê o play abaixo.</p>
+              <audio controls className="w-full">
+                <source src="/audio/presell-story.mp3" type="audio/mpeg" />
+                Seu navegador não suporta o elemento de áudio.
+              </audio>
+            </div>
           </div>
 
           <div className="prose dark:prose-invert max-w-none text-lg text-muted-foreground space-y-6 text-left">
