@@ -95,6 +95,12 @@
       "description": "Fourth WhatsApp testimonial",
       "imageUrl": "https://zeoob.com/generated-images/zeoob.com_tn1ltq1a6g_photo.png",
       "imageHint": "whatsapp chat"
+    },
+    {
+      "id": "presell-image",
+      "description": "Image for presell page, showing a book and a piggy bank.",
+      "imageUrl": "https://export-download.canva.com/WRA4U/DAG4_cWRA4U/42/0/0009-1424748274604256220.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUH5AO7UJ26%2F20251117%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20251117T133530Z&X-Amz-Expires=47300&X-Amz-Signature=cd5d97b0850e61820c1073a943884798f4d9a015a0730789743b608879bdc1dc&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27cold%252C%2520smooth%2520%26%2520tasty..png&response-expires=Tue%2C%2018%20Nov%202025%2002%3A43%3A50%20GMT",
+      "imageHint": "book money"
     }
   ]
 }

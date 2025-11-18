@@ -2,12 +2,15 @@
 
 import { ArrowRight, Clock } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { CountdownTimer } from "@/components/countdown-timer";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { CtaButton } from "@/components/cta-button";
+import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 const TEN_MINUTES_IN_MS = 10 * 60 * 1000;
+const presellImage = PlaceHolderImages.find(img => img.id === 'presell-image');
 
 export default function PresellPage() {
   return (
@@ -15,6 +18,20 @@ export default function PresellPage() {
       <Header />
       <main className="flex-1">
         <div className="container max-w-3xl py-12 sm:py-20 text-center">
+          
+          {presellImage && (
+            <div className="mb-8">
+              <Image
+                src={presellImage.imageUrl}
+                alt={presellImage.description}
+                width={600}
+                height={400}
+                className="rounded-lg shadow-lg mx-auto"
+                data-ai-hint={presellImage.imageHint}
+              />
+            </div>
+          )}
+
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-primary">
             Você Realmente Acredita que o Sucesso é Sorte?
           </h1>
