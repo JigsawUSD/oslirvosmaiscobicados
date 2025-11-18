@@ -35,13 +35,6 @@ export default function PresellPage() {
             </div>
           )}
 
-          <div className="text-center my-8">
-            <audio controls>
-              <source src="/audio/presell-story.mp3" type="audio/mpeg" />
-              Seu navegador não suporta o elemento de áudio.
-            </audio>
-          </div>
-
           <div className="prose dark:prose-invert max-w-none text-lg text-muted-foreground space-y-6 text-left">
             <p>Depois de abrir alguns negócios ao longo dos anos e passar por situações desafiadoras, eu percebi algo que demorou muito para entender: eu sempre vivi nos extremos. Ou eu agia rápido demais, ou eu me preparava tanto que não saía do lugar.</p>
             
