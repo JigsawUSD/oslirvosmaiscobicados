@@ -39,7 +39,7 @@ export default function PresellPage() {
           
           <div className="prose dark:prose-invert max-w-none text-lg text-muted-foreground space-y-6 text-left">
             <p>Depois de abrir alguns negócios ao longo dos anos e passar por situações desafiadoras, eu percebi que existia algo em comum em todas as minhas tentativas: eu sempre agia rápido demais e aprendia tarde demais.</p>
-            <p>Chegou um momento em que eu realmente parei para refletir. Não era sobre sorte, não era sobre o mercado. Era sobre preparo.</p>
+            <p>Chegou um momento em que eu realmente parei para refletir. Não era sobre sorte, не era sobre o mercado. Era sobre preparo.</p>
             <p>Em uma dessas fases complicadas, sentei comigo mesmo e fiz a pergunta que eu evitava há muito tempo: “O que, de fato, eu não estou enxergando?”</p>
             <p className="font-bold text-foreground">Eu não estava sem capacidade. Eu estava sem direção.</p>
             <p>Foi aí que eu decidi tentar novamente — mas de uma forma totalmente diferente. Antes de qualquer ação, eu precisava aprender. E, para isso, pedi ajuda a um amigo. Contei a ele minha intenção de estudar, ajustar minha mentalidade e agir de forma mais estratégica. Ele me apoiou.</p>
@@ -56,7 +56,7 @@ export default function PresellPage() {
           <div className="mt-10 p-6 bg-card border-2 border-dashed border-primary/50 rounded-lg shadow-lg text-center">
             <h2 className="text-2xl font-bold text-primary">Preparamos Algo Especial Para Você</h2>
             <p className="mt-2 text-muted-foreground">
-              A mesma oportunidade que me fez prosperar está agora ao seu alcance. É a sua chance de ter o conhecimento certo para finalmente mudar de vida.
+              O acesso ao conhecimento que me ajudou a encontrar um novo caminho está agora disponível para você. É uma oportunidade para expandir suas perspectivas.
             </p>
             <div className="mt-6 flex justify-center">
               <Link href="/#vsl">
