@@ -41,7 +41,8 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
       {
-        protocol: 'https',
+        protocol: 'https'
+        ,
         hostname: 'images.unsplash.com',
         port: '',
         pathname: '/**',
@@ -85,6 +86,12 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'zeoob.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'export-download.canva.com',
         port: '',
         pathname: '/**',
       },
