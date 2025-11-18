@@ -77,7 +77,7 @@ export default function PresellPage() {
           <div className="mt-10 p-6 bg-card border-2 border-dashed border-primary/50 rounded-lg shadow-lg text-center">
             <h2 className="text-2xl font-bold text-primary">Preparamos Algo Especial Para Você</h2>
             <p className="mt-2 text-muted-foreground">
-              Uma oportunidade única de ter acesso a uma biblioteca de conhecimento que pode mudar o rumo da sua vida financeira e pessoal. Esta é a sua chance de parar de andar em círculos.
+              A mesma oportunidade que me fez prosperar está agora ao seu alcance. É a sua chance de ter o conhecimento certo para finalmente mudar de vida.
             </p>
              <div className="my-6 flex justify-center">
                 <div className="w-full max-w-xs p-3 bg-destructive/10 rounded-lg">
