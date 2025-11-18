@@ -19,6 +19,10 @@ export default function PresellPage() {
       <main className="flex-1">
         <div className="container max-w-3xl py-12 sm:py-20 text-center">
           
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-primary mb-8">
+            Você Realmente Acredita que o Sucesso é Sorte?
+          </h1>
+
           {presellImage && (
             <div className="mb-8">
               <Image
@@ -32,9 +36,6 @@ export default function PresellPage() {
             </div>
           )}
 
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-primary">
-            Você Realmente Acredita que o Sucesso é Sorte?
-          </h1>
           <p className="mt-6 text-lg md:text-xl text-muted-foreground">
             Por anos, eu também acreditei. Via pessoas prosperando e pensava que elas tinham um "toque de Midas" que eu não tinha. A verdade, que descobri a um custo muito alto, é que elas não são mais inteligentes ou sortudas. Elas apenas tiveram acesso ao <span className="font-bold text-foreground">conhecimento certo</span>.
           </p>
