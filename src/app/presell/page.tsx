@@ -1,3 +1,4 @@
+
 "use client";
 
 import { ArrowRight, Clock } from "lucide-react";
@@ -103,7 +104,7 @@ export default function PresellPage() {
             </div>
           </div>
            <p className="mt-8 text-sm text-muted-foreground text-center">
-            Clique no botão acima para ser redirecionado a uma página com uma oferta que você não vai acreditar.
+            Clique no botão acima para ser redirecionado a uma página com uma oportunidade que você não vai acreditar.
           </p>
         </div>
       </main>
