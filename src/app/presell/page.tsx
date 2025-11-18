@@ -80,22 +80,7 @@ export default function PresellPage() {
             <p className="mt-2 text-muted-foreground">
               A mesma oportunidade que me fez prosperar está agora ao seu alcance. É a sua chance de ter o conhecimento certo para finalmente mudar de vida.
             </p>
-             <div className="my-6 flex justify-center">
-                <div className="w-full max-w-xs p-3 bg-destructive/10 rounded-lg">
-                    <div className="flex items-center justify-center gap-2 text-sm font-medium text-destructive">
-                        <Clock className="h-5 w-5" />
-                        Acesso a esta condição especial expira em:
-                    </div>
-                    <CountdownTimer 
-                        initialDurationInMs={TEN_MINUTES_IN_MS}
-                        storageKey="presellOfferEndTime"
-                        onExpire={() => {}} // Não faz nada ao expirar por enquanto
-                        className="text-center text-3xl font-mono font-bold tracking-widest p-2 text-destructive"
-                        expiredText="OFERTA ENCERRADA"
-                    />
-                </div>
-            </div>
-            <div className="flex justify-center">
+            <div className="mt-6 flex justify-center">
               <Link href="/#vsl">
                 <CtaButton>
                   QUERO DESCOBRIR QUAIS LIVROS SÃO ESSES.
