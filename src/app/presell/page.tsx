@@ -38,41 +38,19 @@ export default function PresellPage() {
           )}
           
           <div className="prose dark:prose-invert max-w-none text-lg text-muted-foreground space-y-6 text-left">
-            <p>Depois de abrir vários negócios e quebrar algumas vezes, eu cheguei num ponto que muita gente conhece bem: aquele em que você olha pro próprio reflexo e pensa “cara… talvez eu simplesmente não sirva pra isso.” Eu não tinha mais motivação, não tinha mais confiança e, pra ser sincero, parecia que o universo estava me dizendo pra parar.</p>
-
-            <p>E é louco como, às vezes, a vida te quebra não pra te destruir… mas pra te mostrar o que você estava ignorando.</p>
-
-            <p>Eu sentei na cama, cansado, e me fiz a pergunta que eu vinha evitando por anos: “Se eu errei tantas vezes… será que o problema é o mercado? Ou será que sou eu?”</p>
-
-            <p className="font-bold text-foreground">Essa resposta doeu. Mas foi ela que virou a chave.</p>
-
-            <p>Na minha última quebra eu não tinha mais reserva, não tinha plano B, não tinha rede de segurança. Tinha só duas escolhas: aceitar que eu nasci pra ser mais um… ou tentar de novo — só que dessa vez do jeito certo.</p>
-
-            <p>Com a cara e a coragem, mandei mensagem pra um amigo pedindo uma quantia pra tentar pela última vez. Eu sabia como aquilo soava. Eu sabia que eu parecia um caso perdido.</p>
-
-            <p>Ele demorou pra responder. E aqueles segundos pareceram anos. Até que ele mandou: “Eu confio na tua visão. Mas dessa vez aprende antes de fazer.”</p>
-            
-            <p className="p-6 bg-card border-l-4 border-primary rounded-r-lg shadow">Foi aí que eu entendi que o que faltava em todas as tentativas anteriores eram só duas coisas. Simples. Óbvias. Mas que eu nunca tinha praticado de verdade.</p>
-
-            <p><strong className="text-primary">A primeira era conhecimento antes da pressa.</strong> Eu sempre fui impulsivo. Via oportunidade e ia. Só que oportunidade sem preparo vira prejuízo. E, nessa busca por aprender, eu encontrei algo que mudou completamente minha trajetória: meu Conjunto de Livros Especiais.</p>
-
-            <p>Não eram livros motivacionais vazios. Eram livros que mostravam como pessoas ricas realmente pensam, como tomam decisões, como evitam erros, como constroem riqueza, como analisam riscos e como transformam pequenos negócios em resultados gigantes.</p>
-
-            <p>Era o conhecimento que eu precisava desde o primeiro dia. E eu só descobri quando estava no fundo do poço. Mas ainda dava tempo.</p>
-
-            <p><strong className="text-primary">A segunda coisa era disciplina mesmo quando nada acontece.</strong> Porque o jogo não muda quando você quer… o jogo muda quando você repete.</p>
-
-            <p>Todo santo dia. Mesmo cansado. Mesmo sem resultados. Mesmo sem ninguém acreditando.</p>
-
-            <p>Eu parei de pular de ideia em ideia. Parei de desistir ao primeiro sinal de dificuldade. Pela primeira vez na vida, eu segui um plano até o fim.</p>
-
-            <p className="text-xl font-semibold text-center">E foi ali, silenciosamente, que a virada começou. Devagar. Depois mais rápido. Depois inevitável.</p>
-
-            <p>O negócio deu certo. Eu paguei meu amigo. Paguei minhas dívidas. E, principalmente, paguei a versão de mim que nunca desistiu.</p>
-
-            <p>Hoje, quando alguém me pergunta o que eu faria diferente, eu respondo sem pensar: <strong className="text-foreground">“Eu teria começado pelos livros certos.”</strong> Porque um negócio só cresce quando você cresce antes dele.</p>
-
-            <p className="text-xl font-bold text-center text-primary">E é isso que eu quero te mostrar agora. O mesmo conhecimento que virou a minha última tentativa… pode ser o começo da sua primeira grande virada.</p>
+            <p>Depois de abrir alguns negócios ao longo dos anos e passar por situações desafiadoras, eu percebi que existia algo em comum em todas as minhas tentativas: eu sempre agia rápido demais e aprendia tarde demais.</p>
+            <p>Chegou um momento em que eu realmente parei para refletir. Não era sobre sorte, não era sobre o mercado. Era sobre preparo.</p>
+            <p>Em uma dessas fases complicadas, sentei comigo mesmo e fiz a pergunta que eu evitava há muito tempo: “O que, de fato, eu não estou enxergando?”</p>
+            <p className="font-bold text-foreground">Eu não estava sem capacidade. Eu estava sem direção.</p>
+            <p>Foi aí que eu decidi tentar novamente — mas de uma forma totalmente diferente. Antes de qualquer ação, eu precisava aprender. E, para isso, pedi ajuda a um amigo. Contei a ele minha intenção de estudar, ajustar minha mentalidade e agir de forma mais estratégica. Ele me apoiou.</p>
+            <p>Com aquele voto de confiança, eu tracei um plano simples: primeiro conhecimento, depois execução.</p>
+            <p className="p-6 bg-card border-l-4 border-primary rounded-r-lg shadow">Comecei a estudar temas que nunca tinha dado atenção: gestão, tomada de decisão, organização financeira, estratégia, comportamento e visão de longo prazo. E foi nesse processo que encontrei algo que fez toda diferença na minha forma de pensar e de agir: um conjunto de livros que se tornou essencial nessa virada.</p>
+            <p>Esses livros não eram sobre atalhos, nem sobre fórmulas mágicas. Eram sobre clareza. Sobre entender como tomar decisões melhores, como analisar cenários e como construir algo sólido com base em conhecimento real.</p>
+            <p>A segunda parte foi aplicar isso com consistência. Nada de pressa. Nada de impulsividade. Eu decidi seguir um plano, aprender um pouco todos os dias e aplicar com calma e foco.</p>
+            <p>Com o tempo, tudo ficou mais claro. As escolhas ficaram mais alinhadas. As decisões ficaram mais seguras. E, aos poucos, os resultados começaram a aparecer.</p>
+            <p className="text-xl font-semibold text-center">Hoje, olhando para trás, percebo que existiam apenas duas coisas que realmente faltavam nas minhas tentativas anteriores: entender antes de agir, e agir com constância.</p>
+            <p>E é exatamente isso que compartilho com você agora: o mesmo conjunto de livros que me ajudou a desenvolver clareza, raciocínio estratégico e confiança para tomar decisões mais acertadas. Não é sobre prometer resultados. É sobre oferecer conhecimento que abre caminhos.</p>
+            <p className="text-xl font-bold text-center text-primary">Se você está em fase de construção, recomeço ou reorganização, talvez esse seja o ponto de partida que faltava — assim como faltava pra mim.</p>
           </div>
 
           <div className="mt-10 p-6 bg-card border-2 border-dashed border-primary/50 rounded-lg shadow-lg text-center">
