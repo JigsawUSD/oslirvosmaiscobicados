@@ -1,7 +1,8 @@
 
 "use client";
 
-import { ArrowRight, Clock } from "lucide-react";
+import { useState } from "react";
+import { ArrowRight, Clock, Loader2, Volume2 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { CountdownTimer } from "@/components/countdown-timer";
@@ -9,11 +10,78 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { CtaButton } from "@/components/cta-button";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { getNarratedStory } from "@/app/actions";
+import { Button } from "@/components/ui/button";
 
-const TEN_MINUTES_IN_MS = 10 * 60 * 1000;
 const presellImage = PlaceHolderImages.find(img => img.id === 'presell-image');
+const presellStoryText = `Depois de abrir alguns negócios ao longo dos anos e passar por situações desafiadoras, eu percebi algo que demorou muito para entender: eu sempre vivi nos extremos. Ou eu agia rápido demais, ou eu me preparava tanto que não saía do lugar.
+
+Em uma das fases mais difíceis, sentei comigo mesmo e fiz a pergunta que eu vinha evitando há muito tempo:
+“O que, de fato, eu não estou enxergando?”
+
+Foi aí que caiu a ficha.
+Eu não estava sem capacidade.
+Eu estava sem equilíbrio.
+
+Por muito tempo, eu fui aquela pessoa que via uma oportunidade e já queria entrar de cabeça. Agia rápido, mudava rápido… e errava rápido. Confundia pressa com coragem. Mas a verdade é simples:
+muita ação sem preparo leva a prejuízos desnecessários.
+É como dirigir numa estrada escura: você até avança, mas bate a qualquer momento.
+
+Depois disso, virei o oposto. Passei a estudar tudo, analisar tudo, planejar cada detalhe. E, quanto mais eu estudava, menos eu agia. Sempre parecia faltar alguma coisa antes de dar o próximo passo.
+
+E aí percebi o segundo extremo:
+muito preparo e pouca ação geram estagnação.
+Você aprende, mas não evolui.
+
+Foi nesse momento de reflexão que eu decidi tentar novamente — mas dessa vez do jeito certo. Procurei um amigo, expliquei que queria reorganizar minha mente antes de dar qualquer passo e pedi ajuda para começar com mais consciência. Ele entendeu e me apoiou.
+
+Com esse voto de confiança, tracei um plano simples:
+primeiro clareza, depois movimento.
+
+Comecei a estudar temas que antes eu ignorava: estratégia, tomada de decisão, organização financeira, mentalidade, comportamento.
+E foi nesse processo que encontrei algo que realmente fez diferença: um conjunto de livros que ampliou minha visão e me ajudou a entender como tomar decisões com mais segurança e menos impulso.
+
+Esses livros не prometiam atalhos.
+Eles entregavam clareza.
+Me ajudaram a enxergar o caminho antes de andar por ele.
+
+A segunda parte foi agir — não com pressa, mas com consciência.
+Sem pular etapas, sem confundir movimento com progresso.
+Simplesmente aplicando o que aprendi, um passo por vez.
+
+E, pela primeira vez, tudo começou a se encaixar.
+As decisões ficaram mais seguras, as ideias mais organizadas, e aquilo que antes parecia confuso começou a fazer sentido.
+
+Hoje eu entendo que nada mudou por acaso.
+A mudança começou quando eu encontrei o equilíbrio entre estudo e ação.
+Porque conhecimento sem prática te trava.
+Ação sem conhecimento te machuca.
+Mas o equilíbrio entre os dois te leva adiante.
+
+E é exatamente esse tipo de clareza que quero compartilhar com você agora: o mesmo conjunto de livros que me ajudou a pensar melhor, decidir melhor e agir com mais confiança.
+
+Às vezes, a virada não está nem na pressa… nem na espera.
+Está no equilíbrio entre as duas.`;
+
 
 export default function PresellPage() {
+  const [audioUrl, setAudioUrl] = useState<string | null>(null);
+  const [isGeneratingAudio, setIsGeneratingAudio] = useState(false);
+
+  const handleNarrateStory = async () => {
+    setIsGeneratingAudio(true);
+    try {
+      const { audioDataUri } = await getNarratedStory(presellStoryText);
+      setAudioUrl(audioDataUri);
+    } catch (error) {
+      console.error("Error generating audio:", error);
+      // You could add a toast notification here to inform the user of the error
+    } finally {
+      setIsGeneratingAudio(false);
+    }
+  };
+
+
   return (
     <div className="flex min-h-screen flex-col bg-background">
       <Header />
@@ -37,6 +105,31 @@ export default function PresellPage() {
             </div>
           )}
           
+            <div className="my-8 flex flex-col items-center gap-4">
+            {!audioUrl && (
+              <Button onClick={handleNarrateStory} disabled={isGeneratingAudio} variant="outline">
+                {isGeneratingAudio ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Gerando Áudio...
+                  </>
+                ) : (
+                  <>
+                    <Volume2 className="mr-2 h-4 w-4" />
+                    Ouvir a história em vez de ler
+                  </>
+                )}
+              </Button>
+            )}
+            {audioUrl && (
+              <div className="w-full max-w-md">
+                <audio controls src={audioUrl} className="w-full">
+                  Seu navegador não suporta o elemento de áudio.
+                </audio>
+              </div>
+            )}
+          </div>
+
           <div className="prose dark:prose-invert max-w-none text-lg text-muted-foreground space-y-6 text-left">
             <p>Depois de abrir alguns negócios ao longo dos anos e passar por situações desafiadoras, eu percebi algo que demorou muito para entender: eu sempre vivi nos extremos. Ou eu agia rápido demais, ou eu me preparava tanto que não saía do lugar.</p>
             <p>Em uma das fases mais difíceis, sentei comigo mesmo e fiz a pergunta que eu vinha evitando há muito tempo:<br /><strong>“O que, de fato, eu não estou enxergando?”</strong></p>
