@@ -97,7 +97,7 @@ export default function PresellPage() {
             <div className="flex justify-center">
               <Link href="/#vsl">
                 <CtaButton>
-                  QUERO DESCOBRIR O SEGREDO
+                  QUERO DESCOBRIR QUAIS LIVROS SÃO ESSES.
                 </CtaButton>
               </Link>
             </div>
