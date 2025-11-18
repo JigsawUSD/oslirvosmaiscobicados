@@ -51,7 +51,7 @@ export default function PresellPage() {
             <p>A segunda parte foi agir — não com pressa, mas com consciência.<br />Sem pular etapas, sem confundir movimento com progresso.<br />Simplesmente aplicando o que aprendi, um passo por vez.</p>
             <p>E, pela primeira vez, tudo começou a se encaixar.<br />As decisões ficaram mais seguras, as ideias mais organizadas, e aquilo que antes parecia confuso começou a fazer sentido.</p>
             <p>Hoje eu entendo que nada mudou por acaso.<br />A mudança começou quando eu encontrei o <strong className="text-primary">equilíbrio entre estudo e ação.</strong><br />Porque conhecimento sem prática te trava.<br />Ação sem conhecimento te machuca.<br />Mas o equilíbrio entre os dois te leva adiante.</p>
-            <p>E é exatamente esse tipo de clareza que quero compartilhar com você agora:<br />o mesmo conjunto de livros que me ajudou a pensar melhor, decidir melhor e agir com mais confiança.</p>
+            <p><strong className="text-foreground">E é exatamente esse tipo de clareza que quero compartilhar com você agora: o mesmo conjunto de livros que me ajudou a pensar melhor, decidir melhor e agir com mais confiança.</strong></p>
             <p>Às vezes, a virada não está nem na pressa… nem na espera.<br />Está no <strong className="text-foreground">equilíbrio entre as duas.</strong></p>
           </div>
 
