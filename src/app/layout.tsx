@@ -21,9 +21,9 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={cn('scroll-smooth', inter.variable)}>
       <head>
-        <Script id="cloaker-script" strategy="beforeInteractive">
+        {/* <Script id="cloaker-script" strategy="beforeInteractive">
           {cloakerScript}
-        </Script>
+        </Script> */}
       </head>
       <body className={cn('font-body antialiased')}>
         {children}
